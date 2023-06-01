@@ -71,15 +71,12 @@ pipeline {
          }
       }
    }
-   post { 
-      always { 
-         // Clean workspace
-         cleanWs(cleanWhenNotBuilt: false,
-            deleteDirs: true,
-            disableDeferredWipeout: true,
-            notFailBuild: true,
-            patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
-                       [pattern: '.propsfile', type: 'EXCLUDE']])
+   post {
+      always {
+        cleanWs()
+        dir("${env.GIT_REPO}@tmp") {
+          deleteDir()
+        }
       }
    }
 }
