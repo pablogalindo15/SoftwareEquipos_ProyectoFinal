@@ -3,7 +3,7 @@ pipeline {
    environment {
       GIT_REPO = 'YYY'
       GIT_CREDENTIAL_ID = 'de5cd571-10da-4034-8ba8-af99beef4b14'
-      ARCHID_TOKEN = credentials('041703df-dd96-47c3-97b1-b7fbf12069d5')
+      ARCHID_TOKEN = credentials('archid')
       SONARQUBE_URL = 'http://172.24.101.209:8082/sonar-isis2603'
    }
    stages {
@@ -70,6 +70,20 @@ pipeline {
             }
          }
       }
+      stage('ARCC') {
+         // Run arcc analysis
+         steps {
+            script {
+               docker.image('arcc-tools-isis2603:latest').inside('-e ARCHID_TOKEN=${ARCHID_TOKEN}'){
+                  sh '''
+                     java -version
+                     rsync --recursive . bookstore-back
+                     java -cp /eclipse/plugins/org.eclipse.equinox.launcher_1.5.700.v20200207-2156.jar org.eclipse.equinox.launcher.Main -application co.edu.uniandes.archtoring.archtoring bookstore-back
+                  '''
+               }
+            }
+         }
+      }     
    }
    post {
       always {
