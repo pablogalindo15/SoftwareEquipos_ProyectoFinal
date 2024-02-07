@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class ServicioEntity {
+public class ServicioEntity extends BaseEntity {
     private String nombre;
     private float costoAdicional;
     public enum tipoServicio {parqueadero, gimansio, lavanderia, deposito, restaurante};
