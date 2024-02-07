@@ -2,8 +2,6 @@ package co.edu.uniandes.dse.Vivienda.entities;
 
 import javax.persistence.Entity;
 
-import org.hibernate.mapping.Collection;
-
 import lombok.Data;
 
 @Data
