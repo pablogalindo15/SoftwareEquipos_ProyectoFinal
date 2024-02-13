@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 @Entity
 public class HabitanteEntity extends BaseEntity {
-     @Id
+     
      private String nombre;
      
      private int cedula;
