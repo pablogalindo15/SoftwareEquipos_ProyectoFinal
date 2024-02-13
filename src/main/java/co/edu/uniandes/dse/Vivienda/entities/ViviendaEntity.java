@@ -19,8 +19,8 @@ public class ViviendaEntity extends BaseEntity{
     private float precio;
     private String descripcion;
     private String fotos;
-    private int tamano;
-    private int estrato;
+    private Integer tamano;
+    private Integer estrato;
     private String restricciones;
     public enum tipoVivienda{
         apartaestudio, apartamentoComp, habitaconEnApto, habitacionFamilia

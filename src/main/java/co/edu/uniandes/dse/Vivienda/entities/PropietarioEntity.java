@@ -11,7 +11,7 @@ import lombok.Data;
 public class PropietarioEntity extends BaseEntity {
     private String foto;
     private String nombre; 
-    private int celular;
+    private Integer celular;
     private String correo; 
 
     @OneToMany(mappedBy="propietario")
