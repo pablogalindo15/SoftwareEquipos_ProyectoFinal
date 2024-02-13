@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ManyToAny;
 import javax.persistence.OneToMany;
@@ -33,6 +34,13 @@ public class ViviendaEntity extends BaseEntity{
     private List<HabitanteEntity> historial = new ArrayList<>();
     @OneToMany(mappedBy = "vivienda", orphanRemoval = true)
     private List<HabitanteEntity> habitantes_acutales = new ArrayList<>();
+    @ManyToOne
+    private PropietarioEntity propietario;
+    @ManyToMany
+    private List<LugarEntity> lugarDeInteres_cercano = new ArrayList<>();
+    @OneToMany(mappedBy = "vivienda", fetch = FetchType.LAZY)
+    private List<ServicioEntity> servicios = new ArrayList<>(); 
+
 
 
 

@@ -16,7 +16,7 @@ public class ServicioEntity extends BaseEntity {
     };
     
     @ManyToOne
-    ViviendaEntity vivienda;
+    Private ViviendaEntity vivienda;
 
     
 }

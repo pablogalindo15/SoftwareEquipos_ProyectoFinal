@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.Vivienda.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 import lombok.Data;
 @Data
@@ -14,5 +15,8 @@ public class LugarEntity extends BaseEntity {
     private double coordenadaX;
     private double coordenadaY;
     public enum tipoLugar {Universidad, Restaurante, Supermercado, Parque, CentroComercial }
+ 
+    @ManyToMany
+    private List<ViviendaEntity> viviendas_cercanas = new ArrayList<>();
 
 }
