@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -20,4 +21,6 @@ public class HabitanteEntity extends BaseEntity {
 private List<ComentarioEntity> comentarios = new ArrayList<>();
 @ManyToMany(mappedBy = "historial")
 private List<ViviendaEntity> viviendas = new ArrayList<>();
+@ManyToOne
+private ViviendaEntity vivienda;
 }

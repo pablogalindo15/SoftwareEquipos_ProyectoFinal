@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.ManyToAny;
-
+import javax.persistence.OneToMany;
 import lombok.Data;
 
 @Data
@@ -31,6 +31,8 @@ public class ViviendaEntity extends BaseEntity{
     private double coordY;
     @ManyToMany
     private List<HabitanteEntity> historial = new ArrayList<>();
+    @OneToMany(mappedBy = "vivienda", orphanRemoval = true)
+    private List<HabitanteEntity> habitantes_acutales = new ArrayList<>();
 
 
 
