@@ -17,7 +17,7 @@ public class ComentarioEntity extends  BaseEntity
     
     private String titulo;
     private String texto;
-    private int calificacion;
+    private Integer calificacion;
     
     private String nombre;
     @ManyToMany(mappedBy = "comentarios")
