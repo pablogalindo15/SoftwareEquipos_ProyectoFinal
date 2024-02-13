@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import javax.persistence.ManyToMany;
 
 import lombok.Data;
@@ -13,6 +13,7 @@ import lombok.Data;
 @Entity
 public class ComentarioEntity extends  BaseEntity
 {
+    
     
     private String titulo;
     private String texto;

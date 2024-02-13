@@ -1,6 +1,12 @@
 package co.edu.uniandes.dse.Vivienda.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.ManyToAny;
 
 import lombok.Data;
 
@@ -23,7 +29,8 @@ public class ViviendaEntity extends BaseEntity{
     private Boolean ocupada;
     private double coordX;
     private double coordY;
-
+    @ManyToMany
+    private List<HabitanteEntity> historial = new ArrayList<>();
 
 
 
