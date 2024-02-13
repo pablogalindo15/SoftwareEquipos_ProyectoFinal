@@ -11,7 +11,7 @@ public class ServicioEntity extends BaseEntity {
 
     private String nombre;
 
-    private float costoAdicional;
+    private Float costoAdicional;
     public enum tipoServicio {
         parqueadero, gimansio, lavanderia, deposito, restaurante
     };
