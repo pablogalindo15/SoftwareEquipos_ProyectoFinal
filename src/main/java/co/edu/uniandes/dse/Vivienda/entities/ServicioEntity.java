@@ -1,7 +1,6 @@
 package co.edu.uniandes.dse.Vivienda.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.Data;
@@ -9,8 +8,7 @@ import lombok.Data;
 @Data
 @Entity
 public class ServicioEntity extends BaseEntity {
-    
-    @Id
+
     private String nombre;
 
     private float costoAdicional;
