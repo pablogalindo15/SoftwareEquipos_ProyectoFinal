@@ -1,5 +1,9 @@
 package co.edu.uniandes.dse.Vivienda.entities;
 
+import java.util.Set;
+import java.util.List; 
+import java.util.ArrayList; 
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
@@ -16,7 +20,7 @@ public class LugarEntity extends BaseEntity {
     private double coordenadaY;
     public enum tipoLugar {Universidad, Restaurante, Supermercado, Parque, CentroComercial }
  
-    @ManyToMany
-    private List<ViviendaEntity> viviendas_cercanas = new ArrayList<>();
+@ManyToMany
+private List<ViviendaEntity> viviendas_cercanas = new ArrayList<>();
 
 }

@@ -2,6 +2,8 @@ package co.edu.uniandes.dse.Vivienda.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import java.util.List;
+import java.util.ArrayList;
 
 import lombok.Data;
 @Data 
@@ -12,6 +14,6 @@ public class PropietarioEntity extends BaseEntity {
     private int celular;
     private String correo; 
 
-    @OneToMany(mappedBy="propietario", fetch= FetchType.EAGER)
+    @OneToMany(mappedBy="propietario")
     private List<ViviendaEntity> viviendas = new ArrayList<>(); 
 }
