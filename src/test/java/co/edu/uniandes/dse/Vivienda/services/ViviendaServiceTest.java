@@ -58,15 +58,12 @@ public class ViviendaServiceTest {
     }
 
     private void insertData(){
-        for (int i = 0; i < 5; i++) { // Insertar 5 viviendas de ejemplo (?no estoy segura de que si haga esto)
+        for (int i = 0; i < 5; i++) { // Insertar 5 viviendas de ejemplo 
             ViviendaEntity viviendaEntity = factory.manufacturePojo(ViviendaEntity.class);
             viviendaList.add(viviendaEntity);
             entityManager.persist(viviendaEntity);
         }        
     }
-    
-     
-   
 
     /*
      * TESTS PARA CREAR NUEVA VIVIENDA
@@ -141,5 +138,60 @@ public class ViviendaServiceTest {
                 viviendaService.getVivienda(0L);
         });
     }
+
+    /*
+     * TESTS PARA ACTUALIZAR UNA VIVIENDA
+     */
+
+     @Test
+     public void testUpdateVivienda() throws EntityNotFoundException, IllegalOperationException{
+        ViviendaEntity entity = viviendaList.get(0);
+        ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+        pojoEntity.setId(entity.getId());
+        viviendaService.updateVivienda(entity.getId(), pojoEntity);
+
+        ViviendaEntity resp = entityManager.find(ViviendaEntity.class, entity.getId());
+        assertEquals(pojoEntity, resp);
+     }
+
+     @Test
+    public void testUpdateViviendaInvalid() {
+        assertThrows(EntityNotFoundException.class, () -> {
+                ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+                pojoEntity.setId(0L);
+                viviendaService.updateVivienda(0L, pojoEntity);
+        });
+    }
+
+    @Test
+    void testUpdateViviendaWithNoValidName() {
+        assertThrows(IllegalOperationException.class, () -> {
+                ViviendaEntity entity = viviendaList.get(0);
+                ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+                pojoEntity.setNombre("");
+                pojoEntity.setId(entity.getId());
+                viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+    }
+
+    /*
+     * TESTS PARA BORRAR VIVIENDA
+     */
     
+     @Test
+     void testDeleteVivienda() throws EntityNotFoundException, IllegalOperationException {
+             ViviendaEntity entity = viviendaList.get(1);
+             viviendaService.deleteVivienda(entity.getId());
+             ViviendaEntity deleted = entityManager.find(ViviendaEntity.class, entity.getId());
+             assertNull(deleted);
+     }
+
+     @Test
+    void testDeleteInvalidVivienda() {
+        assertThrows(EntityNotFoundException.class, ()->{
+                viviendaService.deleteVivienda(0L);
+        });
+    }
+
+
 }
