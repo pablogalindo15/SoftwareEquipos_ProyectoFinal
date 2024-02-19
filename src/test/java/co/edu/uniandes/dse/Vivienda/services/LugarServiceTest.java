@@ -74,7 +74,7 @@ class LugarServiceTest {
             viviendaEntity.getLugarDeInteres_cercano().add(lugarList.get(0));
             lugarList.get(0).getViviendas_cercanas().add(viviendaEntity);}
     
-    //@Test
+   //@Test
    // void testCreateLugar()throws EntityNotFoundException, IllegalOperationException{
        // LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
        // newEntity.setNombre("lugar1");
@@ -91,7 +91,7 @@ class LugarServiceTest {
         //assertEquals(newEntity.getPrecioMax(), entity.getPrecioMax());
         //assertEquals(newEntity.getPrecioMin(), entity.getPrecioMin());
         //assertEquals(newEntity.getTiempoLlegada(), entity.getTiempoLlegada());
-        
+
     //}
     @Test   
     void testCreateLugarWithNoValidNombre() {
@@ -118,20 +118,22 @@ class LugarServiceTest {
                 lugarService.createLugar(newEntity);
         });
     }
-    //@Test
-    //void testGetLugares() {   
-       //List<LugarEntity> list = (List<LugarEntity>)lugarService.getLugares();
-        //assertEquals(lugarList.size(), list.size());
-        //for (LugarEntity entity : list) {
-             //   boolean found = false;
-              //  for (LugarEntity storedEntity : lugarList) {
-              //          if (entity.getId().equals(storedEntity.getId())) {
-              //                  found = true;
-              //          }
-              //  }
-             //   assertTrue(found);
-       // }
-   // }
+    @Test
+    void testGetLugares() {   
+       List<LugarEntity> list = (List<LugarEntity>)lugarService.getLugares();
+        assertEquals(lugarList.size(), list.size());
+        for (LugarEntity entity : list) {
+                boolean found = false;
+                for (LugarEntity storedEntity : lugarList) {
+                        if (entity.getId().equals(storedEntity.getId())) {
+                                found = true;
+                        }
+                }
+                assertTrue(found);
+        }
+    }
+
+    
     @Test
     void testGetLugar() throws EntityNotFoundException {
         LugarEntity entity = lugarList.get(0);
