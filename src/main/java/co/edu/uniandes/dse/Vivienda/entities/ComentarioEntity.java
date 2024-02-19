@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 import lombok.Data;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Data
 @Entity
@@ -20,6 +21,7 @@ public class ComentarioEntity extends  BaseEntity
     private Integer calificacion;
     
     private String nombre;
+    @PodamExclude
     @ManyToMany(mappedBy = "comentarios")
     private List<HabitanteEntity> estudiantes = new ArrayList<>();
     

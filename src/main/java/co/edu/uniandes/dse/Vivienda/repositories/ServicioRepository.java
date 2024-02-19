@@ -1,3 +1,4 @@
+
 package co.edu.uniandes.dse.Vivienda.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
