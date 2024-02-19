@@ -18,6 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
+import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.posiblesEstratos;
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.tipoVivienda;
 import co.edu.uniandes.dse.Vivienda.exceptions.*;
 import uk.co.jemos.podam.api.*;
@@ -82,7 +83,7 @@ public class ViviendaServiceTest {
         assertNotNull(result.getDescripcion());
         assertNotNull(result.getFotos());
         assertNotEquals(0, result.getTamano());
-        assertNotEquals(0, result.getEstrato());
+        assertTrue(result.getEstrato() instanceof posiblesEstratos);
         assertNotNull(result.getRestricciones());
         assertNotNull(result.getContacto());
         assertNotNull(result.getDireccion());
@@ -98,6 +99,116 @@ public class ViviendaServiceTest {
         ViviendaEntity newViviendaEntity = factory.manufacturePojo(ViviendaEntity.class);
         newViviendaEntity.setNombre(null);
         assertNull(newViviendaEntity.getNombre());
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoPrecio(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setPrecio(0);
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoDescripcion(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setDescripcion("");
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoFotos(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setFotos("");
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoTamano(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setTamano(0);
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoEstrato(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setEstrato(null);;
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoRestricciones(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setRestricciones(null);
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoContacto(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setContacto(null);
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoDireccion(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setDireccion("");
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoCoordX(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setCoordX(0);
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoCoordY(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setCoordY(0);
+            viviendaService.createVivienda(newEntity);
+        });
+
+    }
+
+    @Test
+    public void testCreateViviendaEntityNoTipo(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+            newEntity.setEstrato(null);;
+            viviendaService.createVivienda(newEntity);
+        });
 
     }
 
@@ -118,7 +229,24 @@ public class ViviendaServiceTest {
             }
             assertTrue(found);
         }
-     } 
+     }
+
+     @Test
+     public void testGetInvalidViviendas(){
+        List<ViviendaEntity> list = (List<ViviendaEntity>) viviendaService.getViviendas();
+        assertEquals(viviendaList.size(), list.size());
+        for (ViviendaEntity entity : list){
+            entity.setId((long) -1);
+            boolean found = false;
+            for (ViviendaEntity storedEntity : viviendaList){
+                if(entity.getId().equals(storedEntity.getId())){
+                    found = true;
+                }
+            }
+            assertTrue(found);
+        }
+     }
+
      
      
     /*
@@ -162,9 +290,9 @@ public class ViviendaServiceTest {
                 viviendaService.updateVivienda(0L, pojoEntity);
         });
     }
-
+  
     @Test
-    void testUpdateViviendaWithNoValidName() {
+    void testUpdateViviendaWithInvalidName() {
         assertThrows(IllegalOperationException.class, () -> {
                 ViviendaEntity entity = viviendaList.get(0);
                 ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
@@ -173,7 +301,140 @@ public class ViviendaServiceTest {
                 viviendaService.updateVivienda(entity.getId(), pojoEntity);
         });
     }
+    ///////////////////////
+    @Test
+    public void testUpdateViviendaEntityNoPrecio(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setPrecio(0);
+            pojoEntity.setId(entity.getId());
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
 
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoDescripcion(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setDescripcion("");
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoFotos(){
+        assertThrows(IllegalOperationException.class, () -> {            
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setFotos("");
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoTamano(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setTamano(0);
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoEstrato(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setEstrato(null);;
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoRestricciones(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setRestricciones(null);
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoContacto(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setContacto(null);
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoDireccion(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setDireccion("");
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoCoordX(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setCoordX(0);
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoCoordY(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setCoordY(0);
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    @Test
+    public void testUpdateViviendaEntityNoTipo(){
+        assertThrows(IllegalOperationException.class, () -> {
+            ViviendaEntity entity = viviendaList.get(0);
+            ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
+            pojoEntity.setId(entity.getId());
+            pojoEntity.setEstrato(null);;
+            viviendaService.updateVivienda(entity.getId(), pojoEntity);
+        });
+
+    }
+
+    //////////////////////
     /*
      * TESTS PARA BORRAR VIVIENDA
      */

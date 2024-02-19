@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
+import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.posiblesEstratos;
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.tipoVivienda;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
@@ -46,8 +47,8 @@ public class ViviendaService {
             throw new IllegalOperationException(("La vivienda no tiene tamanio especificado"));
         }
 
-        if (viviendaEntity.getEstrato() == 0 || viviendaEntity.getEstrato() == null){
-            throw new IllegalOperationException(("La vivienda no tiene estrato especificado"));
+        if ((viviendaEntity.getEstrato() instanceof posiblesEstratos) != true){
+            throw new IllegalOperationException(("La vivienda no tiene estrato valido"));
         }
 
         if (viviendaEntity.getRestricciones() == null || viviendaEntity.getRestricciones() == "" || viviendaEntity.getRestricciones() == " "){
@@ -109,6 +110,53 @@ public class ViviendaService {
 
         if (vivienda.getNombre() == null || vivienda.getNombre() == "" || vivienda.getNombre() == " "){
             throw new IllegalOperationException(("La vivienda no tiene nombre"));
+        }
+        if (vivienda.getPrecio() == 0.0 || vivienda.getPrecio() == 0 || vivienda.getPrecio() == 0.00){
+            throw new IllegalOperationException(("La vivienda no tiene precio"));
+        }
+
+        if (vivienda.getDescripcion() == null || vivienda.getDescripcion() == "" || vivienda.getDescripcion() == " "){
+            throw new IllegalOperationException(("La vivienda no tiene descripcion"));
+        }
+
+        if (vivienda.getFotos() == null || vivienda.getFotos() == "" || vivienda.getFotos() == " "){
+            throw new IllegalOperationException(("La vivienda no tiene fotos"));
+        }
+
+        if (vivienda.getTamano() == 0 || vivienda.getTamano() == null){
+            throw new IllegalOperationException(("La vivienda no tiene tamanio especificado"));
+        }
+
+        if ((vivienda.getEstrato() instanceof posiblesEstratos) != true){
+            throw new IllegalOperationException(("La vivienda no tiene estrato valido"));
+        }
+
+        if (vivienda.getRestricciones() == null || vivienda.getRestricciones() == "" || vivienda.getRestricciones() == " "){
+            throw new IllegalOperationException(("La vivienda no tiene restricciones"));
+        }
+
+        if (vivienda.getContacto() == null || vivienda.getContacto() == "" || vivienda.getContacto() == " "){
+            throw new IllegalOperationException(("La vivienda no tiene contacto"));
+        }
+
+        if (vivienda.getDireccion() == null || vivienda.getDireccion() == "" || vivienda.getDireccion() == " "){
+            throw new IllegalOperationException(("La vivienda no tiene direccion"));
+        }
+
+        if (vivienda.getOcupada() != true && vivienda.getOcupada()!= false){
+            throw new IllegalOperationException(("La vivienda no tiene especificado el estado de su ocupacion"));
+        }
+
+        if (vivienda.getCoordX()== 0){
+            throw new IllegalOperationException(("La vivienda no tiene COORD X especificada"));
+        }
+
+        if (vivienda.getCoordY()== 0){
+            throw new IllegalOperationException(("La vivienda no tiene COORD Y especificada"));
+        }
+
+        if ((vivienda.getTipo() instanceof tipoVivienda) != true){
+            throw new IllegalOperationException(("La vivienda no es de un tipo esperado"));
         }
 
         vivienda.setId(id);

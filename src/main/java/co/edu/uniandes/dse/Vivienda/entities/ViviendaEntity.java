@@ -22,7 +22,10 @@ public class ViviendaEntity extends BaseEntity{
     private String descripcion;
     private String fotos;
     private Integer tamano;
-    private Integer estrato;
+    public enum posiblesEstratos{
+        uno,  dos, tres, cuatro, cinco, seis
+    };
+    private posiblesEstratos estrato;
     private String restricciones;
     public enum tipoVivienda{
         apartaestudio, apartamentoComp, habitaconEnApto, habitacionFamilia
