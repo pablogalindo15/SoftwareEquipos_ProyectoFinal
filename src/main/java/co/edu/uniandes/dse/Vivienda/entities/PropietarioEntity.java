@@ -2,6 +2,9 @@ package co.edu.uniandes.dse.Vivienda.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -17,3 +20,5 @@ public class PropietarioEntity extends BaseEntity {
     @OneToMany(mappedBy="propietario")
     private List<ViviendaEntity> viviendas = new ArrayList<>(); 
 }
+
+
