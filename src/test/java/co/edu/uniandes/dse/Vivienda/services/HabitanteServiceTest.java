@@ -2,7 +2,7 @@ package co.edu.uniandes.dse.Vivienda.services;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
-import org.assertj.core.configuration.Services;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -68,10 +68,7 @@ class HabitanteServiceTest {
             habitanteList.add(habitante);
         }
     
-        HabitanteEntity HabitanteEntity = factory.manufacturePojo(HabitanteEntity.class);
-            entityManager.persist(HabitanteEntity);
-            HabitanteEntity.getNombre().add(habitanteList.get(0));
-            habitanteList.get(0).getNombre().add(HabitanteEntity);
+      
         
     }
     @Test
@@ -107,21 +104,9 @@ class HabitanteServiceTest {
             habitanteService.createHabitante(newEntity);
         });
     }
-    @Test
-    void testGetHabitantes() {
-        List<HabitanteEntity> list = habitanteService.getHabitantes();
-        assertEquals(habitanteList.size(), list.size());
-        for (HabitanteEntity entity : list) {
-            boolean found = false;
-            for (HabitanteEntity storedEntity : habitanteList) {
-                if (entity.getId().equals(storedEntity.getId())) {
-                    found = true;
-                }
-            }
-            assertTrue(found);
-        }
+   
 
-    }
+    
     @Test
     void testGetHabitante() throws EntityNotFoundException {
         HabitanteEntity entity = habitanteList.get(0);

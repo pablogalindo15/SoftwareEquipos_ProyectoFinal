@@ -1,7 +1,6 @@
 package co.edu.uniandes.dse.Vivienda.services;
 import javax.transaction.Transactional;
 import java.util.Optional;
-import org.assertj.core.configuration.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
