@@ -20,7 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ServicioEntity extends BaseEntity {
 
     public String nombre;
-
+   
     public Float costoAdicional;
 
     public enum tipoServicio {parqueadero, gimansio, lavanderia, deposito, restaurante};

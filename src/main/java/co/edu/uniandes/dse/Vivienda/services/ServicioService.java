@@ -23,14 +23,19 @@ public class ServicioService {
     @Transactional
     public static ServicioEntity crearServicio(ServicioEntity servicioEntity) throws IllegalOperationException{
         log.info("inicia el proceso de crear un servico");
-
-        if (servicioEntity.getNombre()==null){
+        if (servicioEntity == null) {
+            throw new IllegalOperationException("La entidad lugar no puede ser nula");
+            }
+        if (servicioEntity.getId()==null){
+            throw new IllegalOperationException("El Servicio debe tener un id");
+        }
+        if (servicioEntity.getNombre()==null|servicioEntity.getNombre().isEmpty()){
             throw new IllegalOperationException("El Servicio debe tener un nombre");
         }
         if (servicioEntity.getCostoAdicional() == null){
             throw new IllegalOperationException("El servicio debe tener un valoir asigando");
         }
-        if (servicioEntity.getCostoAdicional() < 0){
+        if (servicioEntity.getCostoAdicional() < 0| servicioEntity.getCostoAdicional()==null){
             throw new IllegalOperationException("El servicio debe tener un costo no negativo");
         }
         log.info("Termina el proceso de la creacion del servicio");
@@ -46,7 +51,21 @@ public class ServicioService {
         log.info("Termina el proceso de consultar un Servicio por su ID");
         return servicioEntityContainer.get();
     }
-    
+    @Transactional
+    public ServicioEntity updateServicio(long servicioId, ServicioEntity servicio) throws EntityNotFoundException, IllegalOperationException{
+        log.info("Inicia el prceso de actualizar el servicio con su Id ", servicioId);
+        Optional<ServicioEntity> servicioEntityContainer = servicioRepository.findById(servicioId);
+        if (servicioEntityContainer.isEmpty()){
+            throw new EntityNotFoundException("no existe servicio con este Id");
+        }
+        if (servicio.getNombre()==null){
+                throw new IllegalOperationException("El nombre no es valido");}
+        if (servicio.getNombre().isEmpty()){
+                throw new IllegalOperationException("El nombre no es valido");}
+        servicio.setId(servicioId);
+        log.info("termina el proceso de actualizar el servicio con id", servicioId);
+        return servicioRepository.save(servicio);
+    }
 
     @Transactional
     public void deleteServicio(Long servicioId)throws EntityNotFoundException{
@@ -59,16 +78,5 @@ public class ServicioService {
         servicioRepository.deleteById(servicioId);
     }
 
-    @Transactional
-    public ServicioEntity updateServicio(long servicioId, ServicioEntity servicio) throws EntityNotFoundException, IllegalOperationException{
-        log.info("Inicia el prceso de actualizar el servicio con su Id ", servicioId);
-        Optional<ServicioEntity> servicioEntityContainer = servicioRepository.findById(servicioId);
-        if (servicioEntityContainer.isEmpty()){
-            throw new EntityNotFoundException("no existe servicio con este Id");
-        }
-        log.info("termina el proceso de actualizar el servicio con id", servicioId);
-        return servicioRepository.save(servicio);
-    }
+    
 }
-
-

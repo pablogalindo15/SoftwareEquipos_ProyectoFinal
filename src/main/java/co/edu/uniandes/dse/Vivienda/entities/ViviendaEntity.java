@@ -54,7 +54,7 @@ public class ViviendaEntity extends BaseEntity{
     private List<LugarEntity> lugarDeInteres_cercano = new ArrayList<>();
     
     @PodamExclude
-    @OneToMany(mappedBy = "vivienda")
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<ServicioEntity> servicios = new ArrayList<>(); 
 
 
