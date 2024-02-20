@@ -72,7 +72,7 @@ public class PropietarioService {
 
         // Metodo para actualizar un propietario 
         @Transactional
-        public PropietarioEntity updatePropietario(Long id, PropietarioEntity Propietario)
+        public PropietarioEntity updatePropietario(Long id, PropietarioEntity propietario)
                 throws EntityNotFoundException, IllegalOperationException {
 
             log.info("Inicia proceso de actualizar el propietario con id = {0}", id);
@@ -80,12 +80,12 @@ public class PropietarioService {
             if (propietarioEntity.isEmpty())
                 throw new EntityNotFoundException("No se encontro el propietario");
 
-               // if (propietarioEntity.getNombre() == null || propietarioEntity.getNombre().trim().isEmpty())
-                //throw new IllegalOperationException("Es obligatorio ingresar un Nombre"); 
+            if (propietario.getNombre() == null || propietario.getNombre() == "" || propietario.getNombre() == " ")
+            throw new IllegalOperationException("Es obligatorio ingresar un Nombre"); 
 
-            Propietario.setId(id);
+            propietario.setId(id);
             log.info("Termina proceso de actualizar el propietario con id = {0}", id);
-            return PropietarioRepository.save(Propietario);
+            return PropietarioRepository.save(propietario);
             }
         
         @Transactional
