@@ -79,6 +79,10 @@ public class PropietarioService {
             Optional<PropietarioEntity> propietarioEntity = PropietarioRepository.findById(id);   
             if (propietarioEntity.isEmpty())
                 throw new EntityNotFoundException("No se encontro el propietario");
+
+               // if (propietarioEntity.getNombre() == null || propietarioEntity.getNombre().trim().isEmpty())
+                //throw new IllegalOperationException("Es obligatorio ingresar un Nombre"); 
+
             Propietario.setId(id);
             log.info("Termina proceso de actualizar el propietario con id = {0}", id);
             return PropietarioRepository.save(Propietario);
