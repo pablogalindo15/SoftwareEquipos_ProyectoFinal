@@ -7,6 +7,7 @@ import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.repositories.HabitanteRepository;
+import co.edu.uniandes.dse.Vivienda.repositories.PropietarioRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -21,8 +22,14 @@ public class HabitanteService {
 
         if (habitante.getNombre()==null){
             throw new IllegalOperationException("El nombre no es valido");}
+        if (habitante.getNombre()==""){
+            throw new IllegalOperationException("El nombre no es valido");}    
         if (habitante.getCedula() == 0){
             throw new IllegalOperationException("La cedula no es valida");}
+        
+        
+        //if (!HabitanteRepository.findById(habitante.getId()).isEmpty()){
+        //        throw new IllegalOperationException("El Id indicado ya se encuentra registrado en la base de datos.");}
         HabitanteEntity newHabitanteEntity = HabitanteRepository.save(habitante);
         log.info("Termina proceso de creación de habitante");
         return newHabitanteEntity;
@@ -42,6 +49,8 @@ public class HabitanteService {
             throw new EntityNotFoundException("No se encontro el habitante");
         }
         if (habitante.getNombre()==null){
+            throw new IllegalOperationException("El nombre no es valido");}
+        if (habitante.getNombre()==""){
             throw new IllegalOperationException("El nombre no es valido");}
         HabitanteEntity newHabitanteEntity = HabitanteRepository.save(habitante);
         log.info("Termina proceso de actualizar el habitante con id = {0}", habitanteId);
