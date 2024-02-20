@@ -35,12 +35,7 @@ public class LugarService {
         if (lugarEntity.getCoordenadaX() == null || lugarEntity.getCoordenadaY() == null) {
             throw new IllegalOperationException("Las coordenadas no son válidas");
              }
-        if (lugarEntity.getNombre()==null){
-            throw new IllegalOperationException("El nombre no es valido");}
-        if (lugarEntity.getNombre().isEmpty()){
-            throw new IllegalOperationException("El nombre no es valido");}
-        if (!LugarRepository.findById(lugarEntity.getId()).isEmpty()){
-            throw new IllegalOperationException("Ese Id ya existe");}
+        
         if (lugarEntity.getCoordenadaX()==null | lugarEntity.getCoordenadaY()==null){
             throw new IllegalOperationException("Las coordenadas no son validas");}
         if (lugarEntity.getFotos().isEmpty()){

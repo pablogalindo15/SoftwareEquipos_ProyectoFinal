@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 
 import javax.persistence.ManyToMany;
 
-import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.tipoVivienda;
 import lombok.Data;
 import uk.co.jemos.podam.common.PodamExclude;
 @Data

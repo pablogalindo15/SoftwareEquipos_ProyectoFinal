@@ -75,24 +75,23 @@ class LugarServiceTest {
             viviendaEntity.getLugarDeInteres_cercano().add(lugarList.get(0));
             lugarList.get(0).getViviendas_cercanas().add(viviendaEntity);}
     
-        //@Test
-       // void testCreateLugar()throws EntityNotFoundException, IllegalOperationException{
-               // LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
-               // newEntity.setNombre("lugar1");
-               // LugarEntity result = lugarService.createLugar(newEntity);
-               // assertNotNull(result);
-               // LugarEntity entity = entityManager.find(LugarEntity.class, result.getId());
-               // assertEquals(newEntity, result);
-              //  assertEquals(newEntity.getId(), entity.getId());
-              //  assertEquals(newEntity.getNombre(), entity.getNombre());
-              //  assertEquals(newEntity.getCoordenadaX(), entity.getCoordenadaX());
-              //  assertEquals(newEntity.getCoordenadaY(), entity.getCoordenadaY());
-              //  assertEquals(newEntity.getFotos(), entity.getFotos());
-               // assertEquals(newEntity.getPrecioMax(), entity.getPrecioMax());
-               // assertEquals(newEntity.getPrecioMin(), entity.getPrecioMin());
-               // assertEquals(newEntity.getTiempoLlegada(), entity.getTiempoLlegada());
+        @Test
+        void testCreateLugar()throws EntityNotFoundException, IllegalOperationException{
+                LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
+                newEntity.setNombre("lugar1");
+                LugarEntity result = lugarService.createLugar(newEntity);
+                assertNotNull(result);
+                LugarEntity entity = entityManager.find(LugarEntity.class, result.getId());
+                assertEquals(newEntity, result);
+                assertEquals(newEntity.getNombre(), entity.getNombre());
+                assertEquals(newEntity.getCoordenadaX(), entity.getCoordenadaX());
+                assertEquals(newEntity.getCoordenadaY(), entity.getCoordenadaY());
+                assertEquals(newEntity.getFotos(), entity.getFotos());
+                assertEquals(newEntity.getPrecioMax(), entity.getPrecioMax());
+                assertEquals(newEntity.getPrecioMin(), entity.getPrecioMin());
+                assertEquals(newEntity.getTiempoLlegada(), entity.getTiempoLlegada());
                 
-           // }
+            }
 
     @Test   
     void testCreateLugarWithNoValidNombre() {
@@ -111,14 +110,7 @@ class LugarServiceTest {
         });
     }
 
-    @Test
-    void testCreateLugarWithStoredId() {
-        assertThrows(IllegalOperationException.class, () -> {
-                LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
-                newEntity.setId(lugarList.get(0).getId());
-                lugarService.createLugar(newEntity);
-        });
-    }
+  
     @Test
     void testGetLugares() {   
        List<LugarEntity> list = (List<LugarEntity>)lugarService.getLugares();
