@@ -67,7 +67,7 @@ public class PropietarioServiceTest {
         }
 
     @Test
-    void testCreateBook() throws EntityNotFoundException, IllegalOperationException {
+    void testCreatePropietario() throws EntityNotFoundException, IllegalOperationException {
         PropietarioEntity newEntity = factory.manufacturePojo(PropietarioEntity.class);
         newEntity.setNombre("Juan");
         newEntity.setCelular(319607220);
@@ -93,7 +93,7 @@ public class PropietarioServiceTest {
         }
 
     @Test
-    void testCreateBookWithNoValidName2() {
+    void testCreatePropietarioWithNoValidName2() {
             assertThrows(IllegalOperationException.class, () -> {
                         PropietarioEntity newEntity = factory.manufacturePojo(PropietarioEntity.class);
                         newEntity.setNombre(null);
@@ -111,7 +111,7 @@ public class PropietarioServiceTest {
         }
 
     @Test
-    void testCreateBookWithNoValidEmail() {
+    void testCreatePropietarioWithNoValidEmail() {
             assertThrows(IllegalOperationException.class, () -> {
                         PropietarioEntity newEntity = factory.manufacturePojo(PropietarioEntity.class);
                         newEntity.setCorreo(null);
@@ -119,7 +119,7 @@ public class PropietarioServiceTest {
                 });
         }
     @Test
-    void testCreateBookWithNoValidEmail2() {
+    void testCreatePropietarioWithNoValidEmail2() {
             assertThrows(IllegalOperationException.class, () -> {
                             PropietarioEntity newEntity = factory.manufacturePojo(PropietarioEntity.class);
                             newEntity.setCorreo("");
@@ -128,7 +128,7 @@ public class PropietarioServiceTest {
             }
     
     @Test
-    void testCreateBookWithStoredEmail() {
+    void testCreatePropietarioWithStoredEmail() {
             assertThrows(IllegalOperationException.class, () -> {
                             PropietarioEntity newEntity = factory.manufacturePojo(PropietarioEntity.class);
                             newEntity.setCorreo(PropietarioList.get(0).getCorreo());
@@ -231,7 +231,7 @@ public class PropietarioServiceTest {
 
 
     @Test
-    void testDeleteInvalidBook() {
+    void testDeleteInvalidPropietario() {
         assertThrows(EntityNotFoundException.class, ()->{
                 propietarioService.deletePropietario(0L);
         });
