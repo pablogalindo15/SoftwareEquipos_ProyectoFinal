@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.Vivienda.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -74,25 +75,25 @@ class LugarServiceTest {
             viviendaEntity.getLugarDeInteres_cercano().add(lugarList.get(0));
             lugarList.get(0).getViviendas_cercanas().add(viviendaEntity);}
     
-   //@Test
-   // void testCreateLugar()throws EntityNotFoundException, IllegalOperationException{
-       // LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
-       // newEntity.setNombre("lugar1");
-       // assertNotNull(newEntity.getId());
-       // LugarEntity result = lugarService.createLugar(newEntity);
-       // assertNotNull(result);
-       // LugarEntity entity = entityManager.find(LugarEntity.class, result.getId());
-       // assertEquals(newEntity, result);
-       // assertEquals(newEntity.getId(), entity.getId());
-       // assertEquals(newEntity.getNombre(), entity.getNombre());
-       // assertEquals(newEntity.getCoordenadaX(), entity.getCoordenadaX());
-       //assertEquals(newEntity.getCoordenadaY(), entity.getCoordenadaY());
-        //assertEquals(newEntity.getFotos(), entity.getFotos());
-        //assertEquals(newEntity.getPrecioMax(), entity.getPrecioMax());
-        //assertEquals(newEntity.getPrecioMin(), entity.getPrecioMin());
-        //assertEquals(newEntity.getTiempoLlegada(), entity.getTiempoLlegada());
+        //@Test
+       // void testCreateLugar()throws EntityNotFoundException, IllegalOperationException{
+               // LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
+               // newEntity.setNombre("lugar1");
+               // LugarEntity result = lugarService.createLugar(newEntity);
+               // assertNotNull(result);
+               // LugarEntity entity = entityManager.find(LugarEntity.class, result.getId());
+               // assertEquals(newEntity, result);
+              //  assertEquals(newEntity.getId(), entity.getId());
+              //  assertEquals(newEntity.getNombre(), entity.getNombre());
+              //  assertEquals(newEntity.getCoordenadaX(), entity.getCoordenadaX());
+              //  assertEquals(newEntity.getCoordenadaY(), entity.getCoordenadaY());
+              //  assertEquals(newEntity.getFotos(), entity.getFotos());
+               // assertEquals(newEntity.getPrecioMax(), entity.getPrecioMax());
+               // assertEquals(newEntity.getPrecioMin(), entity.getPrecioMin());
+               // assertEquals(newEntity.getTiempoLlegada(), entity.getTiempoLlegada());
+                
+           // }
 
-    //}
     @Test   
     void testCreateLugarWithNoValidNombre() {
         assertThrows(IllegalOperationException.class, () -> {

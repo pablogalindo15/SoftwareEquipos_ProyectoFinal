@@ -25,7 +25,16 @@ public class LugarService {
     @Transactional
     public LugarEntity createLugar(LugarEntity lugarEntity)throws EntityNotFoundException, IllegalOperationException {
         log.info("Inicia proceso de creación del lugar");
-        
+        // Realizar validaciones
+        if (lugarEntity == null) {
+            throw new IllegalOperationException("La entidad lugar no puede ser nula");
+            }
+        if (lugarEntity.getNombre() == null || lugarEntity.getNombre().isEmpty()) {
+            throw new IllegalOperationException("El nombre no es válido");
+            }
+        if (lugarEntity.getCoordenadaX() == null || lugarEntity.getCoordenadaY() == null) {
+            throw new IllegalOperationException("Las coordenadas no son válidas");
+             }
         if (lugarEntity.getNombre()==null){
             throw new IllegalOperationException("El nombre no es valido");}
         if (lugarEntity.getNombre().isEmpty()){
@@ -46,8 +55,10 @@ public class LugarService {
             throw new IllegalOperationException(("La vivienda no es de un tipo esperado"));
         }
         //commo probar enum.
+        LugarEntity savedLugarEntity = LugarRepository.save(lugarEntity);
+
         log.info("Termina proceso de creación del lugar");
-        return  LugarRepository.save(lugarEntity);}
+        return savedLugarEntity;}
         
     public List<LugarEntity> getLugares(){
         log.info("Inicia proceso de consultar todos los lugares");
@@ -82,7 +93,7 @@ public class LugarService {
         if (lugarEntity.isEmpty())
                 throw new EntityNotFoundException("No se encontro el lugar");
 
-        //no se si esto si va pero no creo
+        
         List<ViviendaEntity> viviendas = lugarEntity.get().getViviendas_cercanas();
 
         if (!viviendas.isEmpty())

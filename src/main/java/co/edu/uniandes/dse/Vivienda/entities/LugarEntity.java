@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.ArrayList; 
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+
 import javax.persistence.ManyToMany;
 
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.tipoVivienda;
@@ -25,9 +26,9 @@ public class LugarEntity extends BaseEntity {
     private Double coordenadaY;
     public enum tipoLugar {Universidad, Restaurante, Supermercado, Parque, CentroComercial }
     private tipoLugar tipo;
-@PodamExclude
 
-@ManyToMany
+@PodamExclude
+@ManyToMany(fetch = FetchType.LAZY)
 private List<ViviendaEntity> viviendas_cercanas = new ArrayList<>();
 
 }
