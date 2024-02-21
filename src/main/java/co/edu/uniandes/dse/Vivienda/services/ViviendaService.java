@@ -14,8 +14,10 @@ import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.tipoVivienda;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.repositories.ViviendaRepository;
+import lombok.Data;
 
 @Service
+@Data
 public class ViviendaService {
     // atributos
     @Autowired
