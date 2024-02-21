@@ -25,4 +25,6 @@ public class ViviendaDTO {
     private double coordX;
     private double coordY;
 
+    private PropietarioDTO propietarioDTO;
+
 }
