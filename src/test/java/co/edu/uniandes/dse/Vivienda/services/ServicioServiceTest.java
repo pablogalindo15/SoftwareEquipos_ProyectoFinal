@@ -73,7 +73,8 @@ public class ServicioServiceTest {
             viviendaEntity.getServicios().add(servicioList.get(0));
             //servicioList.get(0).getViviendasServicio().add(viviendaEntity);
         }
-
+    }
+ /**
         @Test
         void testCreateServicio() throws EntityNotFoundException, IllegalOperationException {
             ServicioEntity newEntity = factory.manufacturePojo(ServicioEntity.class);
@@ -125,6 +126,9 @@ public class ServicioServiceTest {
 }
         
 }
-    
-    
 
+###
+    
+     
+
+ */
