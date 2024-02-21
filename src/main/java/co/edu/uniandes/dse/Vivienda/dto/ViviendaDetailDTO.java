@@ -1,10 +1,12 @@
 package co.edu.uniandes.dse.Vivienda.dto;
 
+import java.util.List;
+
 public class ViviendaDetailDTO extends ViviendaDTO{
 
-    private LugarDTO lugarDTO;
-    private ServicioDTO servicioDTO;
-    private HabitanteDTO habitanteDTO;
-    private HabitanteDTO historialDTO;
+    private List<LugarDTO> lugarDTO;
+    private List<ServicioDTO> servicioDTO;
+    private List<HabitanteDTO> habitanteDTO;
+    private List<HabitanteDTO> historialDTO;
     
 }
