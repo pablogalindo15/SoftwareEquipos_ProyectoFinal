@@ -2,6 +2,9 @@ package co.edu.uniandes.dse.Vivienda.dto;
 
 import java.util.List;
 
+import lombok.Data;
+
+@Data
 public class ViviendaDetailDTO extends ViviendaDTO{
 
     private List<LugarDTO> lugarDTO;
