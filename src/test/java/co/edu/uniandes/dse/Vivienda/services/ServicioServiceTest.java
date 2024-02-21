@@ -34,7 +34,7 @@ import uk.co.jemos.podam.api.*;
 public class ServicioServiceTest {
 
     @Autowired
-        private ServicioService servicioService;
+        private ServicioService servicio;
 
         @Autowired
         private TestEntityManager entityManager;
@@ -73,27 +73,25 @@ public class ServicioServiceTest {
             viviendaEntity.getServicios().add(servicioList.get(0));
             //servicioList.get(0).getViviendasServicio().add(viviendaEntity);
         }
-    }
- /**
+    
+
         @Test
         void testCreateServicio() throws EntityNotFoundException, IllegalOperationException {
             ServicioEntity newEntity = factory.manufacturePojo(ServicioEntity.class);
-            ServicioEntity result = ServicioService.crearServicio(newEntity);
+            ServicioEntity result = servicio.crearServicio(newEntity);
             assertNotNull(result);
             ServicioEntity entity = entityManager.find(ServicioEntity.class, result.getId());
-    
             assertEquals(newEntity.getId(), entity.getId());
             assertEquals(newEntity.getCostoAdicional(), entity.getCostoAdicional());
             assertEquals(newEntity.getNombre(), entity.getNombre());
             
         }
-          
         @Test   
-        void testCreateServicioNombrevVacio() {
+        void testCreateServicioNombreVacio() {
                 assertThrows(IllegalOperationException.class, () -> {
                 ServicioEntity newEntity = factory.manufacturePojo(ServicioEntity.class);
                 newEntity.setNombre("");
-                servicioService.crearServicio(newEntity);
+                servicio.crearServicio(newEntity);
             });
         }   
 
@@ -101,34 +99,67 @@ public class ServicioServiceTest {
         void testCreateServicioNombreinvalido() {
             assertThrows(IllegalOperationException.class, () -> {
             ServicioEntity newEntity = factory.manufacturePojo(ServicioEntity.class);
-            newEntity.setNombre(null);
-            servicioService.crearServicio(newEntity);
+            newEntity.setNombre("hola");
+            servicio.crearServicio(newEntity);
         });
-    }   
-        @Test
-        void testCreateServicioID() {
-                assertThrows(IllegalOperationException.class, () -> {
-                ServicioEntity newEntity = factory.manufacturePojo(ServicioEntity.class);
-                newEntity.setId(null);
-                servicioService.crearServicio(newEntity);
-        });
-    }
-
-       
-
-    
-
+        }   
         @Test
         void testDeleteServicioInvalido() {
             assertThrows(EntityNotFoundException.class, ()->{
-                servicioService.deleteServicio(0L );
+                servicio.deleteServicio(0L );
         });
-}
+        }
+        @Test
+        void testUpdateServicio() throws EntityNotFoundException, IllegalOperationException {
+            ServicioEntity entity = servicioList.get(0);
+            ServicioEntity pojoEntity = factory.manufacturePojo(ServicioEntity.class);
+            pojoEntity.setId(entity.getId());
+            servicio.updateServicio(entity.getId(), pojoEntity);
+
+            ServicioEntity resp = entityManager.find(ServicioEntity.class, entity.getId());
+            assertEquals(pojoEntity.getId(), resp.getId());
+            assertEquals(pojoEntity.getCostoAdicional(), resp.getCostoAdicional());
+            assertEquals(pojoEntity.getNombre(), resp.getNombre());
+            assertEquals(pojoEntity.getTipo(), resp.getTipo());
+
+        }   
+        @Test
+        void testGetLugar() throws EntityNotFoundException {
+            ServicioEntity entity = servicioList.get(0);
+            ServicioEntity resultEntity = servicio.getServicio(entity.getId());
+            assertNotNull(resultEntity);
+            assertEquals(entity.getId(), resultEntity.getId());
+            assertEquals(entity.getCostoAdicional(), resultEntity.getCostoAdicional());
+            assertEquals(entity.getNombre(), resultEntity.getNombre());
+            assertEquals(entity.getTipo(), resultEntity.getTipo());
         
+        }
+        @Test 
+        void testCreateServiciocostoNegativo() {
+            assertThrows(IllegalOperationException.class, () -> {
+            ServicioEntity newEntity = factory.manufacturePojo(ServicioEntity.class);
+                float costo = -(newEntity.getCostoAdicional());
+                newEntity.setCostoAdicional(costo);
+                servicio.crearServicio(newEntity);
+            });
+        }
+        @Test
+        void testCreateServicioCostoNull() {
+            assertThrows(IllegalOperationException.class, () -> {
+            ServicioEntity newEntity = factory.manufacturePojo(ServicioEntity.class);
+                newEntity.setCostoAdicional(null);
+                servicio.crearServicio(newEntity);
+            });
+        }
+
+
+
+
+    
 }
 
-###
+
     
      
 
- */
+ 

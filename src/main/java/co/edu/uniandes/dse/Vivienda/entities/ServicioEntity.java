@@ -25,16 +25,8 @@ public class ServicioEntity extends BaseEntity {
 
     public enum tipoServicio {parqueadero, gimansio, lavanderia, deposito, restaurante};
 
-    public tipoServicio encontrarNombre(String name) {
-        tipoServicio result = null;
-        for (tipoServicio direction : tipoServicio.values()) {
-             if (direction.name().equalsIgnoreCase(name)) {
-            result = direction;
-            break;
-        }
-    }
-        return result;
-}
+    public tipoServicio tipo;
+    
     @PodamExclude
     @ManyToMany
     private List<ServicioEntity> viviendasServicio = new ArrayList<>();

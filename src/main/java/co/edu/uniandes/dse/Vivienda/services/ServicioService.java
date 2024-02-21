@@ -17,23 +17,22 @@ import lombok.extern.slf4j.Slf4j;
 public class ServicioService {
 
     @Autowired
-    static
     ServicioRepository servicioRepository;
     
     @Transactional
-    public static ServicioEntity crearServicio(ServicioEntity servicioEntity) throws IllegalOperationException{
+    public ServicioEntity crearServicio(ServicioEntity servicioEntity) throws IllegalOperationException{
         log.info("inicia el proceso de crear un servico");
         if (servicioEntity == null) {
-            throw new IllegalOperationException("La entidad lugar no puede ser nula");
+            throw new IllegalOperationException("La entidad servicio no puede ser nula");
             }
-        if (servicioEntity.getId()==null){
-            throw new IllegalOperationException("El Servicio debe tener un id");
-        }
         if (servicioEntity.getNombre()==null|servicioEntity.getNombre().isEmpty()){
+            throw new IllegalOperationException("EL NOMBRE NO DEBE ESTAR VACIO");
+        }
+        if (servicioEntity.getNombre()=="hola"){
             throw new IllegalOperationException("El Servicio debe tener un nombre");
         }
         if (servicioEntity.getCostoAdicional() == null){
-            throw new IllegalOperationException("El servicio debe tener un valoir asigando");
+            throw new IllegalOperationException("El servicio debe tener un valor asigando");
         }
         if (servicioEntity.getCostoAdicional() < 0| servicioEntity.getCostoAdicional()==null){
             throw new IllegalOperationException("El servicio debe tener un costo no negativo");
