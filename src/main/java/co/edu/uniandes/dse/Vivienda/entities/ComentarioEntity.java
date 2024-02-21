@@ -17,12 +17,13 @@ public class ComentarioEntity extends  BaseEntity
     
     
     private String titulo;
+    
     private String texto;
     private Integer calificacion;
     
     private String nombre;
     @PodamExclude
-    @ManyToMany(mappedBy = "comentarios")
+    @ManyToMany
     private List<HabitanteEntity> estudiantes = new ArrayList<>();
     
 }

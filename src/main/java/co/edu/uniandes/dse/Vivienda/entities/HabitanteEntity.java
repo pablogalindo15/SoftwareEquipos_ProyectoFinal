@@ -18,7 +18,7 @@ public class HabitanteEntity extends BaseEntity {
      
      private int cedula;
 @PodamExclude
-@ManyToMany
+@ManyToMany(mappedBy = "comentarios")
 private List<ComentarioEntity> comentarios = new ArrayList<>();
 
 @PodamExclude
