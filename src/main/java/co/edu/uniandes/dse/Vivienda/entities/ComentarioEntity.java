@@ -23,7 +23,7 @@ public class ComentarioEntity extends  BaseEntity
     
     private String nombre;
     @PodamExclude
-    @ManyToMany
+    @ManyToMany(mappedBy = "comentarios")
     private List<HabitanteEntity> estudiantes = new ArrayList<>();
     
 }
