@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class LugarDetailDTO extends ViviendaDTO{
+public class LugarDetailDTO extends LugarDTO{
     private List<ViviendaDTO> viviendas = new ArrayList<>();
     
 }
