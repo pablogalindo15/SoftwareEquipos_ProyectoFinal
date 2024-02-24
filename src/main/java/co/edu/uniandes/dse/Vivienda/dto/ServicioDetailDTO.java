@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uniandes.dse.Vivienda.entities.ServicioEntity;
-
-public class ServicioDetailDTO {
+import lombok.Data;
+@Data
+public class ServicioDetailDTO extends ServicioDTO{
     private List<ServicioEntity> viviendasServicio = new ArrayList<>();
+    
     
 }
