@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ArrayList; 
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 
 import javax.persistence.ManyToMany;
 
@@ -27,8 +27,9 @@ public class LugarEntity extends BaseEntity {
     private tipoLugar tipo;
 
 @PodamExclude
-@ManyToMany(fetch = FetchType.LAZY)
+@ManyToMany (mappedBy = "lugarDeInteres_cercano")
 private List<ViviendaEntity> viviendas_cercanas = new ArrayList<>();
 
 }
+
 

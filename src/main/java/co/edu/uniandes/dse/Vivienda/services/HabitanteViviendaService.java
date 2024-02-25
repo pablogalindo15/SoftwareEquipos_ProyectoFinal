@@ -39,7 +39,7 @@ public class HabitanteViviendaService {
             if(viviendaEntity.isEmpty())
                 throw new EntityNotFoundException("Vivienda not found");
 
-            viviendaEntity.get().getHabitantes_actuales().add(HabitanteEntity.get());
+            viviendaEntity.get().getHabitantes_acutales().add(HabitanteEntity.get());
             HabitanteEntity.get().setVivienda(viviendaEntity.get());
             log.info("Termina proceso de agregarle un habitante a una vivienda con id = {0}", viviendaId);
             return HabitanteEntity.get();
@@ -56,7 +56,7 @@ public class HabitanteViviendaService {
                 throw new EntityNotFoundException("Habitante not found");
 
             Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(habitanteEntity.get().getVivienda().getId());
-            viviendaEntity.ifPresent(vivienda -> vivienda.getHabitantes_actuales().remove(habitanteEntity.get())); 
+            viviendaEntity.ifPresent(vivienda -> vivienda.getHabitantes_acutales().remove(habitanteEntity.get())); 
             habitanteEntity.get().setVivienda(null);
             log.info("Termina proceso de removerle un habitante a una vivienda con id = {0}", viviendaId);
             }    
@@ -78,7 +78,7 @@ public class HabitanteViviendaService {
             if(viviendaEntity.isEmpty())
                 throw new EntityNotFoundException("Vivienda not found");
             log.info("Termina proceso de consultar el habitante de una vivienda con id = {0}", viviendaId);
-            return viviendaEntity.get().getHabitantes_actuales().get(0);
+            return viviendaEntity.get().getHabitantes_acutales().get(0);
         }
 
 
@@ -93,7 +93,7 @@ public class HabitanteViviendaService {
             if(viviendaEntity.isEmpty())
                 throw new EntityNotFoundException("Vivienda not found");
 
-            viviendaEntity.get().getHabitantes_actuales().add(habitanteEntity.get());
+            viviendaEntity.get().getHabitantes_acutales().add(habitanteEntity.get());
             habitanteEntity.get().setVivienda(viviendaEntity.get());
             log.info("Termina proceso de reemplazar el habitante de una vivienda con id = {0}", viviendaId);
             return habitanteEntity.get();

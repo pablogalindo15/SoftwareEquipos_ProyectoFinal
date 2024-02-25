@@ -5,14 +5,14 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.modelmapper.spi.ErrorMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.uniandes.dse.Vivienda.entities.LugarEntity;
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.entities.LugarEntity.tipoLugar;
-import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.tipoVivienda;
+
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.repositories.LugarRepository;

@@ -63,7 +63,7 @@ class HabitanteViviendaServiceTest {
             HabitanteEntity entity = factory.manufacturePojo(HabitanteEntity.class);
             entityManager.persist(entity);
             entity.setVivienda(vivienda);
-            vivienda.getHabitantes_actuales().add(entity);
+            vivienda.getHabitantes_acutales().add(entity);
         }
 
 
@@ -85,7 +85,7 @@ class HabitanteViviendaServiceTest {
         habitanteViviendaService.addHabitante(vivienda.getId(), newHabitante.getId());
 
         ViviendaEntity viviendaEntity = habitanteViviendaService.getVivienda(newHabitante.getId());
-        assertTrue(viviendaEntity.getHabitantes_actuales().contains(newHabitante));
+        assertTrue(viviendaEntity.getHabitantes_acutales().contains(newHabitante));
 
 
     }
@@ -111,14 +111,14 @@ class HabitanteViviendaServiceTest {
     @Test
     void getViviendaTest() throws EntityNotFoundException {
         ViviendaEntity viviendaEntity = habitanteViviendaService.getVivienda(habitante.getId());
-        assertFalse(viviendaEntity.getHabitantes_actuales().contains(habitante));
+        assertFalse(viviendaEntity.getHabitantes_acutales().contains(habitante));
 
     }
 
     @Test
     void getHabitanteTest() throws EntityNotFoundException {
         HabitanteEntity habitanteEntity = habitanteViviendaService.getHabitante(vivienda.getId());
-        assertTrue(vivienda.getHabitantes_actuales().contains(habitanteEntity));
+        assertTrue(vivienda.getHabitantes_acutales().contains(habitanteEntity));
     }
 
     @Test
@@ -135,8 +135,8 @@ class HabitanteViviendaServiceTest {
         habitanteViviendaService.replaceHabitante(vivienda.getId(), habitante.getId());
 
         ViviendaEntity viviendaEntity = habitanteViviendaService.getVivienda(habitante.getId());
-        assertTrue(viviendaEntity.getHabitantes_actuales().contains(newHabitante));
-        assertTrue(viviendaEntity.getHabitantes_actuales().contains(habitante));
+        assertTrue(viviendaEntity.getHabitantes_acutales().contains(newHabitante));
+        assertTrue(viviendaEntity.getHabitantes_acutales().contains(habitante));
     }
 
     @Test
