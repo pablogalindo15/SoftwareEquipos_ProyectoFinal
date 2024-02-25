@@ -3,14 +3,17 @@ import java.util.Collection;
 import javax.transaction.Transactional;
 
 import java.util.List;
+
+import org.modelmapper.spi.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 
 import co.edu.uniandes.dse.Vivienda.entities.ComentarioEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.repositories.ComentarioRepository;
+import co.edu.uniandes.dse.Vivienda.repositories.HabitanteRepository;
 
 
 
@@ -18,6 +21,8 @@ import co.edu.uniandes.dse.Vivienda.repositories.ComentarioRepository;
 public class ComentarioService {
     @Autowired
     private ComentarioRepository comentarioRepository;
+    @Autowired
+    private HabitanteRepository habitanteRepository;
     @Transactional
     public ComentarioEntity crear(ComentarioEntity nuevo) throws EntityNotFoundException,IllegalOperationException{
         if (nuevo.getTexto()== null){
@@ -54,6 +59,7 @@ public class ComentarioService {
     }
     comentarioRepository.deleteById(comentarioid);
     }
+    
     
     
 }

@@ -27,3 +27,5 @@ public class ComentarioEntity extends  BaseEntity
     private List<HabitanteEntity> estudiantes = new ArrayList<>();
     
 }
+
+
