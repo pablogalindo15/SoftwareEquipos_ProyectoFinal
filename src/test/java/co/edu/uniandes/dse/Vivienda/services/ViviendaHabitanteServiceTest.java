@@ -1,45 +1,43 @@
 package co.edu.uniandes.dse.Vivienda.services;
 
-import javax.transaction.Transactional;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import co.edu.uniandes.dse.Vivienda.services.HabitanteViviendaService;
-import org.junit.jupiter.api.extension.ExtendWith;
-import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
-import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
-import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
-import co.edu.uniandes.dse.Vivienda.repositories.ViviendaRepository;
-import uk.co.jemos.podam.api.PodamFactory;
-import uk.co.jemos.podam.api.PodamFactoryImpl;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
+import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-
+import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Transactional
-@Import(HabitanteViviendaService.class)
-class HabitanteViviendaServiceTest {
-
+@Import(ViviendaHabitanteService.class)
+public class ViviendaHabitanteServiceTest {
     @Autowired
-    private HabitanteViviendaService habitanteViviendaService;
+    private ViviendaHabitanteService viviendaHabitanteService;
 
     @Autowired
     private TestEntityManager entityManager;
     private PodamFactory factory = new PodamFactoryImpl();
     private HabitanteEntity habitante =  new HabitanteEntity();
     private ViviendaEntity vivienda = new ViviendaEntity();
-
-
+    
     @BeforeEach
     public void setUp() {
         clearData();
@@ -65,11 +63,11 @@ class HabitanteViviendaServiceTest {
             entity.setVivienda(vivienda);
             vivienda.getHabitantes_actuales().add(entity);
         }
-
+       
     }
 
     @Test
-    void addViviendaTest() throws EntityNotFoundException{
+    void addHabitanteTest() throws EntityNotFoundException, IllegalOperationException {
         HabitanteEntity newHabitante = factory.manufacturePojo(HabitanteEntity.class);
         newHabitante.setVivienda(vivienda);
         entityManager.persist(newHabitante);
@@ -77,63 +75,54 @@ class HabitanteViviendaServiceTest {
         ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
         entityManager.persist(vivienda);
 
-        habitanteViviendaService.addVivienda(vivienda.getId(), habitante.getId());
-
-        assertTrue(habitante.getVivienda().equals(vivienda));
-
-
-    }
-
-    @Test
-    void addViviendaInvalidTest() throws EntityNotFoundException{
-        HabitanteEntity newHabitante = factory.manufacturePojo(HabitanteEntity.class);
-        newHabitante.setVivienda(vivienda);
-        entityManager.persist(newHabitante);
-
-        ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
-        entityManager.persist(vivienda);
-
-        habitanteViviendaService.addVivienda(vivienda.getId(), habitante.getId());
-
-        assertFalse(habitante.getVivienda().equals(0L));
+        viviendaHabitanteService.addHabitante(vivienda.getId(), newHabitante.getId());
+        
+        assertNotEquals(vivienda.getHabitantes_actuales(), null);
 
     }
 
     @Test
-    void addViviendaInvalidTest2(){
+    void addHabitanteInvalidTest() throws EntityNotFoundException, IllegalOperationException {
         assertThrows(EntityNotFoundException.class, () -> {
             ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
             entityManager.persist(vivienda);
-            habitanteViviendaService.addVivienda(vivienda.getId(), 0L);
+            viviendaHabitanteService.addHabitante(vivienda.getId(), 0L);
         });
-
     }
 
     @Test
-    void getViviendaTest() throws EntityNotFoundException {
-        ViviendaEntity viviendaEntity = habitanteViviendaService.getVivienda(habitante.getId());
-        assertFalse(viviendaEntity.getHabitantes_actuales().contains(habitante));
-
+    void removeHabitanteInvalidTest() throws EntityNotFoundException, IllegalOperationException {
+        assertThrows(EntityNotFoundException.class, () -> {
+            ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
+            entityManager.persist(vivienda);
+            viviendaHabitanteService.removeHabitante(vivienda.getId(), 0L);
+        });
     }
 
     @Test
-    void removeViviendaTest() throws EntityNotFoundException{
+    void replaceHabitanteTest() throws EntityNotFoundException, IllegalOperationException {
         HabitanteEntity newHabitante = factory.manufacturePojo(HabitanteEntity.class);
         newHabitante.setVivienda(vivienda);
         entityManager.persist(newHabitante);
 
-        habitanteViviendaService.removeVivienda(newHabitante.getId());
-        assertFalse(newHabitante.getVivienda() == vivienda);
+        ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
+        entityManager.persist(vivienda);
+
+        viviendaHabitanteService.addHabitante(vivienda.getId(), newHabitante.getId());
+
+        viviendaHabitanteService.replaceHabitante(vivienda.getId(), habitante.getId());
+
+        assertTrue(vivienda.getHabitantes_actuales().contains(newHabitante));
+        assertTrue(vivienda.getHabitantes_actuales().contains(habitante));
     }
 
     @Test
-    void removeViviendaInvalidTest() throws EntityNotFoundException, IllegalOperationException {
+    void replaceHabitanteInvalidTest() throws EntityNotFoundException, IllegalOperationException {
         assertThrows(EntityNotFoundException.class, () -> {
-            HabitanteEntity habitante = factory.manufacturePojo(HabitanteEntity.class);
-            entityManager.persist(habitante);
-            habitante.setVivienda(null);
-            habitanteViviendaService.removeVivienda(habitante.getId());
+            ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
+            entityManager.persist(vivienda);
+            viviendaHabitanteService.replaceHabitante(vivienda.getId(), 0L);
         });
     }
-    
+
 }
