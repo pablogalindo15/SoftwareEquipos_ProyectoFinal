@@ -43,7 +43,7 @@ public class ViviendaEntity extends BaseEntity{
 
     @PodamExclude
     @OneToMany(mappedBy = "vivienda")
-    private List<HabitanteEntity> habitantes_acutales = new ArrayList<>();
+    private List<HabitanteEntity> habitantes_actuales = new ArrayList<>();
 
     @PodamExclude
     @ManyToOne

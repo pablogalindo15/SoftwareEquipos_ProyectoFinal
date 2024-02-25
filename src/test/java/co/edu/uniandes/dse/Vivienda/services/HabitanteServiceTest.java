@@ -1,32 +1,24 @@
 package co.edu.uniandes.dse.Vivienda.services;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import lombok.Data;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
-import co.edu.uniandes.dse.Vivienda.repositories.HabitanteRepository;
-import lombok.extern.slf4j.Slf4j;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
+
 
 
 

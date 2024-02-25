@@ -1,5 +1,14 @@
 package co.edu.uniandes.dse.Vivienda.dto;
 
-public class HabitanteDetailDTO {
+
+import lombok.Data;
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+public class HabitanteDetailDTO extends HabitanteDTO{
+    private List <ViviendaDTO> viviendas = new ArrayList<>(); 
+
+
     
 }
