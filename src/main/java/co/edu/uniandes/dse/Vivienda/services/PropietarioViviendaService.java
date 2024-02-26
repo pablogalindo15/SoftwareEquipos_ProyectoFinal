@@ -1,19 +1,16 @@
 package co.edu.uniandes.dse.Vivienda.services;
-import java.util.Collection;
+
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.modelmapper.spi.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.entities.PropietarioEntity;
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
-import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.repositories.PropietarioRepository;
 import co.edu.uniandes.dse.Vivienda.repositories.ViviendaRepository;
 import lombok.extern.slf4j.Slf4j;

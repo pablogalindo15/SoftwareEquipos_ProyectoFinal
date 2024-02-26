@@ -10,11 +10,9 @@ import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.*;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
@@ -23,7 +21,6 @@ import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.tipoVivienda;
 import co.edu.uniandes.dse.Vivienda.exceptions.*;
 import uk.co.jemos.podam.api.*;
 
-@ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Transactional
 @Import(ViviendaService.class)

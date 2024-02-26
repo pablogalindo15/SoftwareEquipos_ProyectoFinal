@@ -1,10 +1,10 @@
 package co.edu.uniandes.dse.Vivienda.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.transaction.Transactional;
 
@@ -21,13 +21,12 @@ import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-
 @DataJpaTest
 @Transactional
-@Import(ViviendaPropietarioService.class)
-public class ViviendaPropietarioServiceTest {
+@Import(PropietarioViviendaService.class)
+public class PropietarioViviendaServiceTest {
     @Autowired
-    private ViviendaPropietarioService viviendaPropietarioService;
+    private PropietarioViviendaService propietarioViviendaService;
 
     @Autowired
     private TestEntityManager entityManager;
@@ -55,68 +54,69 @@ public class ViviendaPropietarioServiceTest {
     }
 
     @Test
-    void addPropietarioTest() throws EntityNotFoundException{
+    void addViviendaTest() throws EntityNotFoundException{
         PropietarioEntity newPropietario = factory.manufacturePojo(PropietarioEntity.class);
         entityManager.persist(newPropietario);
 
         ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
         entityManager.persist(vivienda);
 
-        viviendaPropietarioService.addPropietarioToVivienda(vivienda.getId(), newPropietario.getId());
-        assertNotEquals(vivienda.getPropietario(),null);
-        assertEquals(vivienda.getPropietario(), newPropietario);
+        propietarioViviendaService.addViviendaToPropietario(vivienda.getId(), newPropietario.getId());
+
+        assertNotEquals(newPropietario.getViviendas(),null);
+        assertTrue(newPropietario.getViviendas().contains(vivienda));
     }
 
     @Test
-    void addPropietarioInvalidTest(){
+    void addViviendaInvalidTest(){
         assertThrows(EntityNotFoundException.class, () -> {
             ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
             entityManager.persist(vivienda);
-            viviendaPropietarioService.addPropietarioToVivienda(vivienda.getId(), 0L);
+            propietarioViviendaService.addViviendaToPropietario(vivienda.getId(), 0L);
         });
     }
 
     @Test
-    void removePropietarioTest() throws EntityNotFoundException{
+    void removeViviendaTest() throws EntityNotFoundException{
         PropietarioEntity newPropietario = factory.manufacturePojo(PropietarioEntity.class);
         entityManager.persist(newPropietario);
 
         ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
         entityManager.persist(vivienda);
 
-        viviendaPropietarioService.addPropietarioToVivienda(vivienda.getId(), newPropietario.getId());
-        viviendaPropietarioService.removePropietarioFromVivienda(vivienda.getId(), newPropietario.getId());
-        assertNotEquals(vivienda.getPropietario(),newPropietario);
+        propietarioViviendaService.addViviendaToPropietario(vivienda.getId(), newPropietario.getId());
+        propietarioViviendaService.removeViviendaFromPropietario(vivienda.getId(), newPropietario.getId());
+        assertFalse(newPropietario.getViviendas().contains(vivienda));
 
     }
 
     @Test
-    void removePropietarioInvalidTest(){
+    void removeViviendaInvalidTest(){
         assertThrows(EntityNotFoundException.class, () -> {
             ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
             entityManager.persist(vivienda);
-            viviendaPropietarioService.removePropietarioFromVivienda(vivienda.getId(), 0L);
+            propietarioViviendaService.removeViviendaFromPropietario(vivienda.getId(), 0L);
         });
-
     }
 
     @Test
-    void getPropietarioTest() throws EntityNotFoundException{
+    void getViviendaTest() throws EntityNotFoundException{
         PropietarioEntity newPropietario = factory.manufacturePojo(PropietarioEntity.class);
         entityManager.persist(newPropietario);
 
         ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
         entityManager.persist(vivienda);
 
-        viviendaPropietarioService.addPropietarioToVivienda(vivienda.getId(), newPropietario.getId());
-        viviendaPropietarioService.getPropietario(vivienda.getId());
-        assertEquals(vivienda.getPropietario(), newPropietario);
+        propietarioViviendaService.addViviendaToPropietario(vivienda.getId(), newPropietario.getId());
+        propietarioViviendaService.getViviendas(newPropietario.getId());
+        int index = newPropietario.getViviendas().indexOf(vivienda);
+        assertEquals(newPropietario.getViviendas().get(index), vivienda);
     }
 
     @Test
-    void getPropietarioInvalidTest(){
+    void getViviendaInvalidTest(){
         assertThrows(EntityNotFoundException.class, ()-> {
-            viviendaPropietarioService.getPropietario(0L);});
+            propietarioViviendaService.getViviendas(0L);});
 
     }
 
