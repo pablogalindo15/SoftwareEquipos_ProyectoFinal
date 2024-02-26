@@ -7,10 +7,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
-
-import javax.persistence.OneToMany;
 import lombok.Data;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -25,11 +22,12 @@ public class ServicioEntity extends BaseEntity {
 
     public enum tipoServicio {parqueadero, gimansio, lavanderia, deposito, restaurante};
 
-    public tipoServicio tipo;
+    public tipoServicio tipo;   
     
     @PodamExclude
-    @ManyToMany
-    private List<ServicioEntity> viviendasServicio = new ArrayList<>();
+    @ManyToMany (mappedBy = "serviciosVivienda")
+    
+    private List<ViviendaEntity> viviendasServicio = new ArrayList<>();
 
 
     

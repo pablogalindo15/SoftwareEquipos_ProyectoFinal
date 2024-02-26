@@ -10,23 +10,17 @@ import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.*;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import co.edu.uniandes.dse.Vivienda.entities.LugarEntity;
 import co.edu.uniandes.dse.Vivienda.entities.ServicioEntity;
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
-import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.posiblesEstratos;
-import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity.tipoVivienda;
 import co.edu.uniandes.dse.Vivienda.exceptions.*;
 import uk.co.jemos.podam.api.*;
 
 
 
-@ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Transactional
 @Import(ServicioService.class)
@@ -70,7 +64,7 @@ public class ServicioServiceTest {
 
             ViviendaEntity viviendaEntity = factory.manufacturePojo(ViviendaEntity.class);
             entityManager.persist(viviendaEntity);
-            viviendaEntity.getServicios().add(servicioList.get(0));
+            viviendaEntity.getServiciosVivienda().add(servicioList.get(0));
             //servicioList.get(0).getViviendasServicio().add(viviendaEntity);
         }
     

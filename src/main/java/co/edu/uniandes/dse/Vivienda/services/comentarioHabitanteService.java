@@ -4,7 +4,6 @@ import java.util.Optional;
 import java.util.List;
 import javax.transaction.Transactional;
 
-import org.modelmapper.spi.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import co.edu.uniandes.dse.Vivienda.entities.ComentarioEntity;

@@ -54,7 +54,7 @@ public class ViviendaEntity extends BaseEntity{
     
     @PodamExclude
     @ManyToMany
-    private List<ServicioEntity> servicios = new ArrayList<>(); 
+    private List<ServicioEntity> serviciosVivienda = new ArrayList<>(); 
 
 
 

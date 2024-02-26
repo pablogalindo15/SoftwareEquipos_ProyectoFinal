@@ -3,8 +3,6 @@ package co.edu.uniandes.dse.Vivienda.entities;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.ArrayList;
 
