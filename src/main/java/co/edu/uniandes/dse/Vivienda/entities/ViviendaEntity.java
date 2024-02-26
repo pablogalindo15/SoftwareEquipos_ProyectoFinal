@@ -50,14 +50,15 @@ public class ViviendaEntity extends BaseEntity{
     private PropietarioEntity propietario;
 
     @PodamExclude
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany 
     private List<LugarEntity> lugarDeInteres_cercano = new ArrayList<>();
     
     @PodamExclude
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private List<ServicioEntity> servicios = new ArrayList<>(); 
 
 
 
 
 }
+
