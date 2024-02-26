@@ -91,6 +91,21 @@ public class ViviendaHabitanteServiceTest {
     }
 
     @Test
+    void removeHabitanteTest() throws EntityNotFoundException{
+        HabitanteEntity newHabitante = factory.manufacturePojo(HabitanteEntity.class);
+        newHabitante.setVivienda(vivienda);
+        entityManager.persist(newHabitante);
+
+        ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
+        entityManager.persist(vivienda);
+
+        viviendaHabitanteService.addHabitante(vivienda.getId(), newHabitante.getId());
+        viviendaHabitanteService.removeHabitante(vivienda.getId(), newHabitante.getId());
+
+        assertNotEquals(vivienda.getHabitantes_actuales(), newHabitante);
+    }
+
+    @Test
     void removeHabitanteInvalidTest() throws EntityNotFoundException, IllegalOperationException {
         assertThrows(EntityNotFoundException.class, () -> {
             ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);

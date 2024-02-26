@@ -32,20 +32,19 @@ public class ViviendaPropietarioService {
     public ViviendaEntity addPropietarioToVivienda(Long viviendaId, Long propietarioId) throws EntityNotFoundException {
         log.info("Inicia proceso de agregar un propietario a una vivienda con id = {0}", viviendaId);
 
-        Optional<ViviendaEntity> ViviendaEntity = viviendaRepository.findById(viviendaId);
-        if(ViviendaEntity.isEmpty())
+        Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(viviendaId);
+        if(viviendaEntity.isEmpty())
             throw new EntityNotFoundException("Vivienda not found");
 
         Optional<PropietarioEntity> propietarioEntity = propietarioRepository.findById(propietarioId);
         if(propietarioEntity.isEmpty())
             throw new EntityNotFoundException("Propietario not found");
     
-        ViviendaEntity.get().setPropietario(propietarioEntity.get());
+        viviendaEntity.get().setPropietario(propietarioEntity.get());
         log.info("Termina proceso de agregarle un habitante a una vivienda con id = {0}", viviendaId);
-        return ViviendaEntity.get();
+        return viviendaEntity.get();
         }
 
-    
     @Transactional
     public void removePropietarioFromVivienda(Long viviendaId, Long propietarioId) throws EntityNotFoundException {
         log.info("Inicia proceso de removerle el propietario a una vivienda con id = {0}", viviendaId);
