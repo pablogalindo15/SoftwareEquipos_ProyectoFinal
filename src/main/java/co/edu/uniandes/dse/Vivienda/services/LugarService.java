@@ -47,7 +47,7 @@ public class LugarService {
         if (lugarEntity.getTiempoLlegada()==0){
             throw new IllegalOperationException("El tiempo de llegada no es valido");}
         if ((lugarEntity.getTipo() instanceof tipoLugar) != true){
-            throw new IllegalOperationException(("La vivienda no es de un tipo esperado"));
+            throw new IllegalOperationException(("El tipo no es de un tipo esperado"));
         }
         //commo probar enum.
         LugarEntity savedLugarEntity = LugarRepository.save(lugarEntity);

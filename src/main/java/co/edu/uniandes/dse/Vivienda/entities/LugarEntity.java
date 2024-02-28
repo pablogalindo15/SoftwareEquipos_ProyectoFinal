@@ -23,7 +23,7 @@ public class LugarEntity extends BaseEntity {
     private Double precioMax;
     private Double coordenadaX;
     private Double coordenadaY;
-    public enum tipoLugar {Universidad, Restaurante, Supermercado, Parque, CentroComercial }
+    public enum tipoLugar {Universidad, Restaurante, Supermercado, Parque, CentroComercial };
     private tipoLugar tipo;
 
 @PodamExclude

@@ -26,7 +26,6 @@ import co.edu.uniandes.dse.Vivienda.entities.LugarEntity;
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
-import co.edu.uniandes.dse.Vivienda.services.LugarService;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
