@@ -17,8 +17,8 @@ public class LugarEntity extends BaseEntity {
     
     private String nombre;
     private String fotos;
-    private int tiempoLlegada;
-    private boolean gratis;
+    private Integer tiempoLlegada;
+    private Boolean gratis;
     private Double precioMin;
     private Double precioMax;
     private Double coordenadaX;
