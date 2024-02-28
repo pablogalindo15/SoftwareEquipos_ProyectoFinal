@@ -17,7 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ViviendaEntity extends BaseEntity{
     
     private String nombre;
-    private float precio;
+    private Float precio;
     private String descripcion;
     private String fotos;
     private Integer tamano;
@@ -33,8 +33,8 @@ public class ViviendaEntity extends BaseEntity{
     private String contacto;
     private String direccion;
     private Boolean ocupada;
-    private double coordX;
-    private double coordY;
+    private Double coordX;
+    private Double coordY;
 
     @PodamExclude
     @ManyToMany

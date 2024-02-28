@@ -103,7 +103,7 @@ public class ViviendaServiceTest {
     public void testCreateViviendaEntityNoPrecio(){
         assertThrows(IllegalOperationException.class, () -> {
             ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
-            newEntity.setPrecio(0);
+            newEntity.setPrecio((float) 0);
             viviendaService.createVivienda(newEntity);
         });
 
@@ -183,7 +183,7 @@ public class ViviendaServiceTest {
     public void testCreateViviendaEntityNoCoordX(){
         assertThrows(IllegalOperationException.class, () -> {
             ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
-            newEntity.setCoordX(0);
+            newEntity.setCoordX((double) 0);
             viviendaService.createVivienda(newEntity);
         });
 
@@ -193,7 +193,7 @@ public class ViviendaServiceTest {
     public void testCreateViviendaEntityNoCoordY(){
         assertThrows(IllegalOperationException.class, () -> {
             ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
-            newEntity.setCoordY(0);
+            newEntity.setCoordY((double) 0);
             viviendaService.createVivienda(newEntity);
         });
 
@@ -304,7 +304,7 @@ public class ViviendaServiceTest {
         assertThrows(IllegalOperationException.class, () -> {
             ViviendaEntity entity = viviendaList.get(0);
             ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
-            pojoEntity.setPrecio(0);
+            pojoEntity.setPrecio((float) 0);
             pojoEntity.setId(entity.getId());
             viviendaService.updateVivienda(entity.getId(), pojoEntity);
         });
@@ -401,7 +401,7 @@ public class ViviendaServiceTest {
             ViviendaEntity entity = viviendaList.get(0);
             ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
             pojoEntity.setId(entity.getId());
-            pojoEntity.setCoordX(0);
+            pojoEntity.setCoordX((double) 0);
             viviendaService.updateVivienda(entity.getId(), pojoEntity);
         });
 
@@ -413,7 +413,7 @@ public class ViviendaServiceTest {
             ViviendaEntity entity = viviendaList.get(0);
             ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
             pojoEntity.setId(entity.getId());
-            pojoEntity.setCoordY(0);
+            pojoEntity.setCoordY((double) 0);
             viviendaService.updateVivienda(entity.getId(), pojoEntity);
         });
 

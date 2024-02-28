@@ -6,7 +6,7 @@ import lombok.Data;
 public class ViviendaDTO {
     private Long id;
     private String nombre;
-    private float precio;
+    private Float precio;
     private String descripcion;
     private String fotos;
     private Integer tamano;
@@ -22,8 +22,8 @@ public class ViviendaDTO {
     private String contacto;
     private String direccion;
     private Boolean ocupada;
-    private double coordX;
-    private double coordY;
+    private Double coordX;
+    private Double coordY;
 
     private PropietarioDTO propietarioDTO;
 
