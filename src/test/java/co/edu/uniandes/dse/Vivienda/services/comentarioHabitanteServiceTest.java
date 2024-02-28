@@ -3,23 +3,23 @@ package co.edu.uniandes.dse.Vivienda.services;
 import javax.transaction.Transactional;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import org.junit.jupiter.api.extension.ExtendWith;
+
+
 import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.entities.ComentarioEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
-import co.edu.uniandes.dse.Vivienda.repositories.ComentarioRepository;
-import co.edu.uniandes.dse.Vivienda.repositories.HabitanteRepository;
+
+
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -43,7 +43,7 @@ public class comentarioHabitanteServiceTest {
     private List<ComentarioEntity> comentarioList = new ArrayList<>();
     private List<HabitanteEntity> habitanteList = new ArrayList<>();
     private HabitanteEntity habitante = new HabitanteEntity();
-    private ComentarioEntity comentario = new ComentarioEntity();
+    
 @BeforeEach
 void setUp(){
     clearData();
