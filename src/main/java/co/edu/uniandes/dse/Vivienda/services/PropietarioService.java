@@ -18,6 +18,8 @@ import co.edu.uniandes.dse.Vivienda.repositories.PropietarioRepository;
 import lombok.extern.slf4j.Slf4j;
 
 
+// LOGICA 
+
 @Slf4j
 @Service
 
