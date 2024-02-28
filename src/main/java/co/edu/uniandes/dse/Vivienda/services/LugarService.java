@@ -40,7 +40,7 @@ public class LugarService {
             throw new IllegalOperationException("Las coordenadas no son validas");}
         if (lugarEntity.getFotos().isEmpty()){
             throw new IllegalOperationException("La foto no es valida");}
-        if (!(lugarEntity.isGratis()|!lugarEntity.isGratis())){
+        if (!(lugarEntity.getGratis()|!lugarEntity.getGratis())){
             throw new IllegalOperationException("No es valido el valor de gratis");}
         if (lugarEntity.getPrecioMin()==null | lugarEntity.getPrecioMax()==null){
             throw new IllegalOperationException("Las coordenadas no son validas");}
