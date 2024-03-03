@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 public class ViviendaDetailDTO extends ViviendaDTO{
 
-    private List<LugarDTO> lugarDTO;
-    private List<ServicioDTO> servicioDTO;
-    private List<HabitanteDTO> habitanteDTO;
-    private List<HabitanteDTO> historialDTO;
+    private List<LugarDTO> lugarDeInteres_cercano;
+    private List<ServicioDTO> serviciosVivienda;
+    private List<HabitanteDTO> habitantes_actuales;
+    private List<HabitanteDTO> historial;
     
 }
