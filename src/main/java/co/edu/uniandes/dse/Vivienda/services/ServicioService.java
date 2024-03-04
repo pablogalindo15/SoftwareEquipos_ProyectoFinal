@@ -1,10 +1,9 @@
 package co.edu.uniandes.dse.Vivienda.services;
+import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import co.edu.uniandes.dse.Vivienda.entities.ServicioEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
@@ -74,6 +73,11 @@ public class ServicioService {
         }
         log.info("Termina le proceso de eliminar un servicio por su ID");
         servicioRepository.deleteById(servicioId);
+    }
+
+     public List<ServicioEntity> getTodos(){
+        log.info("Inicia proceso de consultar todos los lugares");
+        return servicioRepository.findAll();
     }
 
     
