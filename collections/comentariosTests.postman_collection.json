@@ -126,13 +126,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/comentario/{{id}}",
+					"raw": "{{url}}/comentario",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"comentario",
-						"{{id}}"
+						"comentario"
 					]
 				}
 			},
