@@ -48,23 +48,23 @@ public List<ComentarioDetailDTO> findall(){
 		 ComentarioEntity comentarioEntity = comentarioService.crear(modelMapper.map( comentarioDTO, ComentarioEntity.class));
 		return modelMapper.map(comentarioEntity, ComentarioDTO.class);
 	}
-@GetMapping(value = "{id}")
+@GetMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public ComentarioDTO findOne(@PathVariable("id")Long id) throws EntityNotFoundException, IllegalOperationException{
         ComentarioEntity comentarioEntity = comentarioService.getComentario(id);
         return modelMapper.map(comentarioEntity, ComentarioDetailDTO.class);
 
     }
-	@PutMapping(value = "{id}")
+	@PutMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public ComentarioDTO update(@PathVariable("id")Long id, @RequestBody ComentarioDTO comentarioDTO) throws EntityNotFoundException, IllegalOperationException{
         ComentarioEntity comentarioEntity = comentarioService.updateComentario(id, modelMapper.map(comentarioDTO, ComentarioEntity.class));
         return modelMapper.map(comentarioEntity, ComentarioDTO.class);
     }
-	@DeleteMapping(value = "{id}")
+	@DeleteMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public void delete(@PathVariable("id")Long id) throws EntityNotFoundException, IllegalOperationException{
-        comentarioService.deleteComentario(id);;
+        comentarioService.deleteComentario(id);
 
     }
 }
