@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "0e443100-a6b4-4d0b-9c16-3f50357e861f",
+		"name": "LugarViviendaTests.postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32672518",
+		"_collection_link": "https://bold-shadow-18946.postman.co/workspace/Vivienda_Back~76b4a8d3-091b-4f6f-b16c-3dc79f71e582/collection/32672518-0e443100-a6b4-4d0b-9c16-3f50357e861f?action=share&source=collection_link&creator=32672518"
+	},
+	"item": [
+		{
+			"name": "Agregar una vivienda a un lugar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/{{vivienda_id_1}}.",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"{{vivienda_id_1}}."
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar una vivienda que no existe a un lugar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugaress/{{lugar_id}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugaress",
+						"{{lugar_id}}",
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una vivienda de un lugar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/{{vivienda_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"{{vivienda_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una vivienda que no existe de un autor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/luagres/{{lugar_id}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"luagres",
+						"{{lugar_id}}",
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una vivienda que no esta asociada a un lugar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/{{vivienda_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"{{vivienda_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener las viviendas de un lugar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/lugares",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"lugares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar viviendas con un lugar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar viviendas de un lugar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"nombre\": \"Apartamento1\",\n    \"precio\":10,\n    \"descripcion\":\"Apartamento Grande\",\n    \"fotos\": \"fotos\",\n    \"tamano\": 10,\n    \"estrato\":4,\n    \"restricciones\":\"Ninguna\",\n    \"tipo\": 0,\n    \"contacto\":12345,\n    \"direccion\":\"Calle 100\",\n    \"ocupada\": false,\n    \"coordX\": 1,\n    \"coordY\":1}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas\n\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas\n\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar viviendas que no existen a un lugar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"nombre\": \"Apartamento1\",\n    \"precio\":10,\n    \"descripcion\":\"Apartamento Grande\",\n    \"fotos\": \"fotos\",\n    \"tamano\": 10,\n    \"estrato\":4,\n    \"restricciones\":\"Ninguna\",\n    \"tipo\": 0,\n    \"contacto\":12345,\n    \"direccion\":\"Calle 100\",\n    \"ocupada\": false,\n    \"coordX\": 1,\n    \"coordY\":1}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authors/{{author_id}}/books",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authors",
+						"{{author_id}}",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una vivienda de un lugar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas{{vivienda_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas{{vivienda_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una vivienda a un lugar que no existe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/luagres/0/viviendas/{{vivienda_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"luagres",
+						"0",
+						"viviendas",
+						"{{vivienda_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una vivienda que no existe de un autor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
