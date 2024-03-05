@@ -62,6 +62,7 @@ public class LugarController {
 		return modelMapper.map(lugarEntity, LugarDTO.class);
 	}
 
+
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, IllegalOperationException {

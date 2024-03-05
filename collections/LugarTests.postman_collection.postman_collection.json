@@ -16,7 +16,7 @@
 					"script": {
 						"exec": [
 							"var data = pm.response.json()",
-							"pm.globals.set(\"author_id_1\", data.id);",
+							"pm.globals.set(\"lugar_id_1\", data.id);",
 							"",
 							"pm.test(\"Status code is 201\", function () {",
 							"   pm.response.to.have.status(201);",
@@ -31,7 +31,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \n    \"nombre\":\"cafeteria\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000,\n    \"precioMax\": 50000,\n    \"coordenadaX\": 123,\n    \"coordenadaY\":123,\n    \"tipo\": 1\n}",
+					"raw": "{\n    \n    \"nombre\":\"cafeteria\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000.0,\n    \"precioMax\": 50000.0,\n    \"coordenadaX\": 123.0,\n    \"coordenadaY\":123.0,\n    \"tipo\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -57,7 +57,14 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							""
+							"pm.test('Number of lugares > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -92,6 +99,20 @@
 		},
 		{
 			"name": "Obtener un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -122,6 +143,24 @@
 		},
 		{
 			"name": "Obtener un lugar que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el lugar\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -152,12 +191,26 @@
 		},
 		{
 			"name": "Editar un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\":\"Starbucks\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000,\n    \"precioMax\": 50000,\n    \"coordenadaX\": 123,\n    \"coordenadaY\":123,\n    \"tipo\": 1\n\n}",
+					"raw": "{\n    \"nombre\":\"Starbucks\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000.0,\n    \"precioMax\": 50000.0,\n    \"coordenadaX\": 123.0,\n    \"coordenadaY\":123.0,\n    \"tipo\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -165,13 +218,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}/lugares/{{author_id_1}}",
+					"raw": "{{baseUrl}}/lugares/{{lugar_id_1}}",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"lugares",
-						"{{author_id_1}}"
+						"{{lugar_id_1}}"
 					]
 				}
 			},
@@ -179,6 +232,24 @@
 		},
 		{
 			"name": "Editar un lugar que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el lugar\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -206,6 +277,19 @@
 		},
 		{
 			"name": "Borrar un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -224,6 +308,25 @@
 		},
 		{
 			"name": "Borrar un lugar que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el lugar\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
