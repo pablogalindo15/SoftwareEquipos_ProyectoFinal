@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "b03faa8c-4a60-4f31-99ce-556034e57271",
+		"name": "ViviendasTests.postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32527961"
+	},
+	"item": [
+		{
+			"name": "Crear una vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"vivienda_id_1\", data.id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000.00,\r\n    \"descripcion\": \"Perfecto para un estudiante joven\",\r\n    \"tamano\":80,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000.00,\r\n    \"coordY\":10000.00,\r\n    \"propietario\":{\"id\":1}\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas"
+					]
+				},
+				"description": "Existe una enumeracion de posibles tipos de vivienda:\n\napartaestudio, apartamentoComp, habitaconEnApto, habitacionFamilia\n\nExiste una enumeracion de posibles estratos:\n\nuno,  dos, tres, cuatro, cinco, seis\n\nDebe devolver 201 si la creacion de la vivienda fue exitosa."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una vivienda 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"vivienda_id_2\", data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Apartamento moderno\",\r\n    \"precio\": 1500000.00,\r\n    \"descripcion\": \"Espacioso y luminoso\",\r\n    \"tamano\": 120,\r\n    \"estrato\": 4,\r\n    \"fotos\": \"https://images.app.goo.gl/xyz123\",\r\n    \"restricciones\": \"No se permiten fiestas\",\r\n    \"tipo\": 2,\r\n    \"contacto\": \"www.modernapartments.com\",\r\n    \"direccion\": \"Calle 10 #25-35\",\r\n    \"ocupada\": false,\r\n    \"coordX\": 20000.00,\r\n    \"coordY\": 20000.00,\r\n    \"propietario\": {\"id\": 2}\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas"
+					]
+				},
+				"description": "Existe una enumeracion de posibles tipos de vivienda:\n\napartaestudio, apartamentoComp, habitaconEnApto, habitacionFamilia\n\nExiste una enumeracion de posibles estratos:\n\nuno, dos, tres, cuatro, cinco, seis\n\nDebe devolver 201 si la creacion de la vivienda fue exitosa."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una vivienda",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 1,\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000,\r\n    \"descripcion\": \"Muy bonito\",\r\n    \"tamano\":80,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000,\r\n    \"coordY\":10000,\r\n    \"propietario\":{\"id\":1}\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una vivienda que no existe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"03-03-2023 12:16:09\",\r\n        \"message\": \"NO SE ENCONTRO LA VIVIENDA\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las viviendas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\" : 1,\r\n        \"nombre\":\"Habitacion unica\",\r\n        \"precio\": 1000000,\r\n        \"descripcion\": \"Muy bonito\",\r\n        \"tamano\":80,\r\n        \"estrato\": 3,\r\n        \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n        \"restricciones\":\"No se aceptan mascotas\",\r\n        \"tipo\":1,\r\n        \"contacto\":\"www.cityU.com\",\r\n        \"direccion\":\"cra 1a #19-23\",\r\n        \"ocupada\":false,\r\n        \"coordX\":10000,\r\n        \"coordY\":10000,\r\n        \"propietario\":{\"id\":1}\r\n        },\r\n\r\n    {\r\n        \"id\" : 2,\r\n        \"nombre\": \"Apartamento moderno\",\r\n        \"precio\": 1500000,\r\n        \"descripcion\": \"Espacioso y luminoso\",\r\n        \"tamano\": 120,\r\n        \"estrato\": 4,\r\n        \"fotos\": \"https://images.app.goo.gl/xyz123\",\r\n        \"restricciones\": \"No se permiten fiestas\",\r\n        \"tipo\": 2,\r\n        \"contacto\": \"www.modernapartments.com\",\r\n        \"direccion\": \"Calle 10 #25-35\",\r\n        \"ocupada\": false,\r\n        \"coordX\": 20000,\r\n        \"coordY\": 20000,\r\n        \"propietario\": {\"id\": 2}\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar una vivienda",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000.00,\r\n    \"descripcion\": \"Perfecto para un estudiante joven que quiera socializar con otros estudiantes de edad similar a la suya\",\r\n    \"tamano\":35,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000.00,\r\n    \"coordY\":10000.00,\r\n    \"propietario\":{\"id\":1}\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar una vivienda que no existe",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"03-03-2023 12:16:09\",\r\n        \"message\": \"NO SE ENCONTRO LA VIVIENDA\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una vivienda",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\":204,\r\n    \"message\": \"No Content\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una vivienda que no existe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"03-03-2023 12:16:09\",\r\n        \"message\": \"NO SE ENCONTRO LA VIVIENDA\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
