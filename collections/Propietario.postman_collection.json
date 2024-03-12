@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "089c1ca0-a851-4613-b054-e1e0a5a71b5e",
+		"name": "Propietario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32645686"
+	},
+	"item": [
+		{
+			"name": "Crear un propeitario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// En esta instancia se guarda el id que se recibe en el json, para luego usarlo en el get\r",
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"propietario_id_1\", data.id);\r",
+							"\r",
+							"// En esta se comprueba que el status del send si sea el correcto\r",
+							"pm.test(\"Status code is 201\", function (){\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Elon Musk\", \r\n    \"celular\": 1,\r\n    \"correo\": \"elonmusk@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Propietario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"{{propietario_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ejemplo Get Propietario",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Elon Musk\", \r\n    \"celular\": 1,\r\n    \"correo\": \"elonmusk@gmail.com\"\r\n\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propietarios",
+								"{{propietario_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get Propietarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ejemplo Get Propietarios",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"id\": 1,\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Elon Musk\", \r\n    \"celular\": 1,\r\n    \"correo\": \"elonmusk@gmail.com\"\r\n\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propietarios",
+								"{{propietario_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update Propietarios",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"foto\": \"https://i.insider.com/65e5a99c6080194819fc0515?width=700\",\r\n    \"nombre\": \"Sam Altman\", \r\n    \"celular\": 2,\r\n    \"correo\": \"samaltman@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"{{propietario_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Propietario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"{{propietario_id_1}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
