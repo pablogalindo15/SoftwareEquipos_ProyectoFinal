@@ -27,12 +27,11 @@ public class LugarViviendaService {
         log.info("Inicia proceso de asociarle una vivienda a un lugar con id = {0}", lugarId);
         Optional<LugarEntity> lugarEntity = lugarRepository.findById(lugarId);
         Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(viviendaId);
+        if (viviendaEntity.isEmpty())
+            throw new EntityNotFoundException("La vivienda esta vacia.");
 
         if (lugarEntity.isEmpty())
             throw new EntityNotFoundException("El lugar esta vacio.");
-
-        if (viviendaEntity.isEmpty())
-            throw new EntityNotFoundException("La vivienda esta vacia.");
 
         viviendaEntity.get().getLugarDeInteres_cercano().add(lugarEntity.get());
         log.info("Termina proceso de asociarle una vivienda a un lugar con id = {0}", lugarId);
@@ -91,14 +90,16 @@ public class LugarViviendaService {
 
     @Transactional
     public void removeVivienda(Long lugarId, Long viviendaId) throws EntityNotFoundException {
-        log.info("Inicia proceso de borrar un lugar de la vivienda con id = {0}", lugarId);
+        log.info("Inicia proceso de borrar una vivienda de un lugar con id = {0}", lugarId);
         Optional<LugarEntity> lugarEntity = lugarRepository.findById(lugarId);
-        if (lugarEntity.isEmpty())
-            throw new EntityNotFoundException("El lugar esta vacio.");
 
         Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(viviendaId);
         if (viviendaEntity.isEmpty())
             throw new EntityNotFoundException("La vivienda esta vacia.");
+
+        if (lugarEntity.isEmpty())
+            throw new EntityNotFoundException("El lugar esta vacio.");
+
 
         viviendaEntity.get().getLugarDeInteres_cercano().remove(lugarEntity.get());
         lugarEntity.get().getViviendas_cercanas().remove(viviendaEntity.get());
@@ -106,5 +107,6 @@ public class LugarViviendaService {
     }
 }
     
+
 
 

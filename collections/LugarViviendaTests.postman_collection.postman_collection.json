@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "0e443100-a6b4-4d0b-9c16-3f50357e861f",
+		"name": "LugarViviendaTests.postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32672518",
+		"_collection_link": "https://bold-shadow-18946.postman.co/workspace/Vivienda_Back~76b4a8d3-091b-4f6f-b16c-3dc79f71e582/collection/32672518-0e443100-a6b4-4d0b-9c16-3f50357e861f?action=share&source=collection_link&creator=32672518"
+	},
+	"item": [
+		{
+			"name": "Crear propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"propietario_id_1\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function(){",
+							"    pm.response.to.have.status(201)",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\n    \"nombre\": \"Mike Towers\", \n    \"celular\": 1,\n    \"correo\": \"mikeyyyyy@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"vivienda_id_1\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function(){",
+							"    pm.response.to.have.status(201)",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Habitacion unica\",\n    \"precio\": 1000000.00,\n    \"descripcion\": \"Perfecto para un estudiante joven\",\n    \"tamano\":80,\n    \"estrato\": 3,\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\n    \"restricciones\":\"No se aceptan mascotas\",\n    \"tipo\":1,\n    \"contacto\":\"www.cityU.com\",\n    \"direccion\":\"cra 1a #19-23\",\n    \"ocupada\":false,\n    \"coordX\":10000.00,\n    \"coordY\":10000.00,\n    \"propietario\":{\"id\":{{propietario_id_1}}}\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Vivienda 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"vivienda_id_2\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function(){",
+							"    pm.response.to.have.status(201)",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Habitacion doble\",\n    \"precio\": 1000000.00,\n    \"descripcion\": \"Perfecto para un estudiante joven\",\n    \"tamano\":80,\n    \"estrato\": 3,\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\n    \"restricciones\":\"No se aceptan mascotas\",\n    \"tipo\":1,\n    \"contacto\":\"www.cityU.com\",\n    \"direccion\":\"cra 1a #19-23\",\n    \"ocupada\":false,\n    \"coordX\":10000.00,\n    \"coordY\":10000.00,\n    \"propietario\":{\"id\":{{propietario_id_1}}}\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"lugar_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"nombre\":\"cafeteria\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000.0,\n    \"precioMax\": 50000.0,\n    \"coordenadaX\": 123.0,\n    \"coordenadaY\":123.0,\n    \"tipo\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar una vivienda a un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/{{vivienda_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"{{vivienda_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar una vivienda que no existe a un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"NOT_FOUND\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"La vivienda esta vacia.\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una vivienda de un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/{{vivienda_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"{{vivienda_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una vivienda que no existe de un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"La vivienda esta vacia.\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una vivienda que no esta asociada a un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"The vivienda is not associated to the lugar\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/{{vivienda_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"{{vivienda_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener las viviendas de un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of viviendas > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una vivienda de un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/{{vivienda_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"{{vivienda_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una vivienda a un lugar que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"El lugar esta vacio.\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/0/viviendas/{{vivienda_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"0",
+						"viviendas",
+						"{{vivienda_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una vivienda que no existe de un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"La vivienda esta vacia.\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}/viviendas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}",
+						"viviendas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
