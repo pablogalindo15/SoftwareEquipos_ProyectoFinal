@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.HttpStatus;
-import org.hibernate.mapping.List;
+
+
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,8 @@ import co.edu.uniandes.dse.Vivienda.services.HabitanteService;
 import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.modelmapper.TypeToken;
+
+
 
 
 
@@ -63,5 +65,7 @@ public HabitanteDTO update(@PathVariable("id") Long id, @RequestBody HabitanteDT
 @ResponseStatus(code = HttpStatus.OK)
 public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, IllegalOperationException{
     habitanteService.deleteHabitante(id);
+
+}
 
 }

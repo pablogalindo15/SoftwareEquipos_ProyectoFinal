@@ -2,14 +2,12 @@ package co.edu.uniandes.dse.Vivienda.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.uniandes.dse.Vivienda.dto.PropietarioDTO;
+
 import co.edu.uniandes.dse.Vivienda.dto.ViviendaDTO;
 import co.edu.uniandes.dse.Vivienda.dto.ViviendaDetailDTO;
-import co.edu.uniandes.dse.Vivienda.entities.PropietarioEntity;
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
-import co.edu.uniandes.dse.Vivienda.services.PropietarioService;
 import co.edu.uniandes.dse.Vivienda.services.ViviendaService;
 
 import java.util.Collection;

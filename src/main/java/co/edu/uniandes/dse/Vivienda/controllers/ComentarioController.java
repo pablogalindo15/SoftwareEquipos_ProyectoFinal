@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import co.edu.uniandes.dse.Vivienda.entities.ComentarioEntity;
-import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.services.ComentarioService;
@@ -24,8 +23,7 @@ import org.modelmapper.TypeToken;
 
 import co.edu.uniandes.dse.Vivienda.dto.ComentarioDTO;
 import co.edu.uniandes.dse.Vivienda.dto.ComentarioDetailDTO;
-import co.edu.uniandes.dse.Vivienda.dto.ViviendaDTO;
-import co.edu.uniandes.dse.Vivienda.dto.ViviendaDetailDTO;
+
 @RestController
 @RequestMapping("/comentario")
 public class ComentarioController {

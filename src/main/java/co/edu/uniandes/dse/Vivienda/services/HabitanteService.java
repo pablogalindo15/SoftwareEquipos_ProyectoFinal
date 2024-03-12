@@ -7,7 +7,7 @@ import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.repositories.HabitanteRepository;
-import co.edu.uniandes.dse.Vivienda.repositories.PropietarioRepository;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
