@@ -52,7 +52,86 @@
 			"response": []
 		},
 		{
+			"name": "Get Propietarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de Propietarios > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ejemplo Get Propietarios",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"id\": 1,\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Elon Musk\", \r\n    \"celular\": 1,\r\n    \"correo\": \"elonmusk@gmail.com\"\r\n\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propietarios",
+								"{{propietario_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
 			"name": "Get Propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -108,44 +187,72 @@
 			]
 		},
 		{
-			"name": "Get Propietarios",
+			"name": "Get Propietario Inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontró el Propietario\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{baseUrl}}/propietarios",
+					"raw": "{{baseUrl}}/propietarios/0",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
-						"propietarios"
+						"propietarios",
+						"0"
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "Ejemplo Get Propietarios",
+					"name": "Get Propietario Inexistente",
 					"originalRequest": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n    \"id\": 1,\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Elon Musk\", \r\n    \"celular\": 1,\r\n    \"correo\": \"elonmusk@gmail.com\"\r\n\r\n    }\r\n]",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:01:09\",\r\n        \"message\": \"El autor con el Id dado no fue encontrado\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"propietarios",
-								"{{propietario_id_1}}"
-							]
 						}
 					},
 					"_postman_previewlanguage": null,
@@ -156,7 +263,20 @@
 			]
 		},
 		{
-			"name": "Update Propietarios",
+			"name": "Update Propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -183,7 +303,65 @@
 			"response": []
 		},
 		{
+			"name": "Update Propietario Inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el propietario\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"foto\": \"https://i.insider.com/65e5a99c6080194819fc0515?width=700\",\r\n    \"nombre\": \"Sam Altman\", \r\n    \"celular\": 2,\r\n    \"correo\": \"samaltman@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Delete Propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -195,6 +373,43 @@
 					"path": [
 						"propietarios",
 						"{{propietario_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Propietario Inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el propietario\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"0"
 					]
 				}
 			},
