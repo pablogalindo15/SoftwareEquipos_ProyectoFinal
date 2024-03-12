@@ -6,6 +6,6 @@ import lombok.Data;
 public class HabitanteDTO {
     private Long id;
     private String nombre;
-    private int cedula;
+    private Integer cedula;
     
 }
