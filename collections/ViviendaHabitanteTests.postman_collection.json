@@ -300,7 +300,8 @@
 							"   pm.response.to.have.status(200);\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -308,13 +309,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_1}}/habitantes/{{habitante_id_1}}",
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/habitantes/{{habitante_id_1}}",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"viviendas",
-						"{{vivienda_id_1}}",
+						"{{vivienda_id_2}}",
 						"habitantes",
 						"{{habitante_id_1}}"
 					]
@@ -339,7 +340,8 @@
 							"});\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -347,13 +349,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_1}}/habitantes/{{habitante_id_3}}",
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/habitantes/{{habitante_id_3}}",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"viviendas",
-						"{{vivienda_id_1}}",
+						"{{vivienda_id_2}}",
 						"habitantes",
 						"{{habitante_id_3}}"
 					]
@@ -377,7 +379,8 @@
 							"   pm.expect(data.apierror.message).to.eql(\"El habitante esta vacio.\");\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -385,13 +388,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_1}}/habitantes/0",
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/habitantes/0",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"viviendas",
-						"{{vivienda_id_1}}",
+						"{{vivienda_id_2}}",
 						"habitantes",
 						"0"
 					]
@@ -415,7 +418,8 @@
 							"   pm.response.to.have.status(200);\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -423,13 +427,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_1}}/habitantes",
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/habitantes",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"viviendas",
-						"{{vivienda_id_1}}",
+						"{{vivienda_id_2}}",
 						"habitantes"
 					]
 				}
@@ -448,7 +452,8 @@
 							"});\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -465,13 +470,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_1}}/habitantes",
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/habitantes",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"viviendas",
-						"{{vivienda_id_1}}",
+						"{{vivienda_id_2}}",
 						"habitantes"
 					]
 				}
@@ -489,7 +494,8 @@
 							"   pm.response.to.have.status(204);\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -497,13 +503,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_1}}/habitantes/{{habitante_id_2}}",
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/habitantes/{{habitante_id_2}}",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"viviendas",
-						"{{vivienda_id_1}}",
+						"{{vivienda_id_2}}",
 						"habitantes",
 						"{{habitante_id_2}}"
 					]
