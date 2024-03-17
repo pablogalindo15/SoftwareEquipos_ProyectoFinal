@@ -73,5 +73,26 @@ public class HabitanteViviendaService {
             log.info("termina el proceso de eliminar la vivienda del habitante con id = " + habitanteId);
         }
 
+        /*
+         * Se actualiza la vivienda de un habitante
+         */
+        @Transactional
+        public ViviendaEntity updateVivienda(Long habitanteId, Long viviendaId) throws EntityNotFoundException {
+            log.info("Inicia proceso de actualizar la vivienda de un habitante con id = {0}", habitanteId);
+            Optional<HabitanteEntity> habitanteEntity = habitanteRepository.findById(habitanteId);
+            if(habitanteEntity.isEmpty())
+                throw new EntityNotFoundException("Habitante not found");
+            Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(viviendaId);
+            if(viviendaEntity.isEmpty())
+                throw new EntityNotFoundException("Vivienda not found");
+            habitanteEntity.get().setVivienda(viviendaEntity.get());
+            log.info("Termina proceso de actualizar la vivienda de un habitante con id = {0}", habitanteId);
+            return viviendaEntity.get();
+        }
+
+
+        
+        
+
 }   
 

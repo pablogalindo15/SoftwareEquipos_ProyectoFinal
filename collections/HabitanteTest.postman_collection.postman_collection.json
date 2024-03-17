@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "13ee8a50-1241-4a95-9b20-ced17eb954bf",
+		"_postman_id": "5a8d12ba-0809-423d-be42-1892839c0ab2",
 		"name": "HabitanteTest.postman_collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32909011"
@@ -38,9 +38,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/habitantes",
+					"raw": "{{baseUrl}}/habitantes",
 					"host": [
-						"{{baseURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"habitantes"
@@ -64,9 +64,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/habitantes",
+							"raw": "{{baseUrl}}/habitantes",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"habitantes"
@@ -75,10 +75,10 @@
 					},
 					"status": "Created",
 					"code": 201,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -107,9 +107,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/habitantes",
+					"raw": "{{baseUrl}}/habitantes",
 					"host": [
-						"{{baseURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"habitantes"
@@ -122,31 +122,16 @@
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{   \r\n    \"nombre\" : \"Carlos Garcia\",\r\n    \"cedula\" : 1234567890 ,\r\n    \"comentario\" : [],\r\n    \"vivienda\" : []\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseURL}}/habitantes",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"habitantes"
-							]
+							"raw": ""
 						}
 					},
 					"status": "OK",
 					"code": 200,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -170,9 +155,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/habitantes/{{habitante_id_1}}",
+					"raw": "{{baseUrl}}/habitantes/{{habitante_id_1}}",
 					"host": [
-						"{{baseURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"habitantes",
@@ -193,22 +178,16 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\" : 1,\r\n    \"nombre\" : \"Carlos Garcia\",\r\n    \"cedula\" : 1234567890 ,\r\n    \"comentario\" : [],\r\n    \"vivienda\" : []\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+						"url": {
+							"raw": ""
 						}
 					},
 					"status": "OK",
 					"code": 200,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -237,9 +216,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/habitantes/0",
+					"raw": "{{baseUrl}}/habitantes/0",
 					"host": [
-						"{{baseURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"habitantes",
@@ -260,22 +239,16 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:01:09\",\r\n        \"message\": \"El habitante con la id otorgada no se encuentra\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+						"url": {
+							"raw": ""
 						}
 					},
 					"status": "Not Found",
 					"code": 404,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -308,9 +281,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/habitantes/{{habitante_id_1}}",
+					"raw": "{{baseUrl}}/habitantes/{{habitante_id_1}}",
 					"host": [
-						"{{baseURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"habitantes",
@@ -339,14 +312,17 @@
 									"language": "json"
 								}
 							}
+						},
+						"url": {
+							"raw": ""
 						}
 					},
 					"status": "OK",
 					"code": 200,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -384,9 +360,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/habitantes/0",
+					"raw": "{{baseUrl}}/habitantes/0",
 					"host": [
-						"{{baseURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"habitantes",
@@ -415,14 +391,17 @@
 									"language": "json"
 								}
 							}
+						},
+						"url": {
+							"raw": ""
 						}
 					},
 					"status": "Not Found",
 					"code": 404,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -446,9 +425,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/habitantes/{{habitante_id_1}}",
+					"raw": "{{baseUrl}}/habitantes/{{habitante_id_1}}",
 					"host": [
-						"{{baseURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"habitantes",
@@ -461,14 +440,17 @@
 					"name": "Borrar un habitante",
 					"originalRequest": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"status": "No Content",
 					"code": 204,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -529,14 +511,17 @@
 									"language": "json"
 								}
 							}
+						},
+						"url": {
+							"raw": ""
 						}
 					},
 					"status": "Not Found",
 					"code": 404,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		}

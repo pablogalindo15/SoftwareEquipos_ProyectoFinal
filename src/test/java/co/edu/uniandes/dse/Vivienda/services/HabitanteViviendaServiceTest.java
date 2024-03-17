@@ -103,8 +103,8 @@ class HabitanteViviendaServiceTest {
 
     @Test
     void getViviendaTest() throws EntityNotFoundException {
-        ViviendaEntity viviendaEntity = habitanteViviendaService.getVivienda(habitante.getId());
-        assertFalse(viviendaEntity.getHabitantes_actuales().contains(habitante));
+        ViviendaEntity vivienda = habitanteViviendaService.getVivienda(habitante.getId());
+        assertTrue(vivienda.equals(habitante.getVivienda()));
 
     }
 
@@ -127,5 +127,37 @@ class HabitanteViviendaServiceTest {
             habitanteViviendaService.removeVivienda(habitante.getId());
         });
     }
+
+    @Test
+    void updateViviendaTest() throws EntityNotFoundException{
+        ViviendaEntity newVivienda = factory.manufacturePojo(ViviendaEntity.class);
+        entityManager.persist(newVivienda);
+
+        habitanteViviendaService.updateVivienda(habitante.getId(), newVivienda.getId());
+        assertTrue(habitante.getVivienda().equals(newVivienda));
+    }
+
+    @Test
+    void updateViviendaInvalidTest() throws EntityNotFoundException{
+        ViviendaEntity newVivienda = factory.manufacturePojo(ViviendaEntity.class);
+        entityManager.persist(newVivienda);
+
+        habitanteViviendaService.updateVivienda(habitante.getId(), newVivienda.getId());
+        assertFalse(habitante.getVivienda().equals(0L));
+    }
+
+    @Test
+    void updateViviendaInvalidTest2(){
+        assertThrows(EntityNotFoundException.class, () -> {
+            ViviendaEntity vivienda = factory.manufacturePojo(ViviendaEntity.class);
+            entityManager.persist(vivienda);
+            habitanteViviendaService.updateVivienda(0L, vivienda.getId());
+        });
+
+        
+
+    }
+
+
     
 }
