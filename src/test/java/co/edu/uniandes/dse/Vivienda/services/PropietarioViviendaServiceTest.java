@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -33,6 +36,9 @@ public class PropietarioViviendaServiceTest {
     private PodamFactory factory = new PodamFactoryImpl();
     private PropietarioEntity propietario  = new PropietarioEntity();
     private ViviendaEntity vivienda = new ViviendaEntity();
+
+    private List<PropietarioEntity> propietariosList = new ArrayList<>();
+	private List<ViviendaEntity> viviendasList = new ArrayList<>();
 
     @BeforeEach
     public void setUp() {
@@ -119,5 +125,16 @@ public class PropietarioViviendaServiceTest {
             propietarioViviendaService.getViviendas(0L);});
 
     }
+    @Test
+	void testReplaceViviendas() throws EntityNotFoundException {
+		PropietarioEntity entity = propietariosList.get(0);
+		List<ViviendaEntity> list = viviendasList.subList(1, 3);
+		propietarioViviendaService.replaceViviendas(entity.getId(), list);
+
+		for (ViviendaEntity vivienda : list) {
+			ViviendaEntity b = entityManager.find(ViviendaEntity.class, vivienda.getId());
+			assertTrue(b.getPropietario().equals(entity));
+		}
+	}
 
 }
