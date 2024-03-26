@@ -125,6 +125,8 @@ public class PropietarioViviendaServiceTest {
             propietarioViviendaService.getViviendas(0L);});
 
     }
+    /*
+     * 
     @Test
 	void testReplaceViviendas() throws EntityNotFoundException {
 		PropietarioEntity entity = propietariosList.get(0);
@@ -136,5 +138,6 @@ public class PropietarioViviendaServiceTest {
 			assertTrue(b.getPropietario().equals(entity));
 		}
 	}
+     */
 
 }

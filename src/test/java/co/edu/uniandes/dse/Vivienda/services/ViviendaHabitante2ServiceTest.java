@@ -27,13 +27,13 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 @DataJpaTest
 @Transactional
-@Import(ViviendaHabitanteService.class)
+@Import(ViviendaHabitante2Service.class)
 /*
- * Primera relacion con Habitantes, donde se modelan los habitantes actuales de una vivienda
+ * Segunda relacion con Habitantes, donde se modelan el historial de una vivienda
  */
-public class ViviendaHabitanteServiceTest {
+public class ViviendaHabitante2ServiceTest {
     @Autowired
-    private ViviendaHabitanteService viviendaHabitanteService;
+    private ViviendaHabitante2Service viviendaHabitanteService;
 
     @Autowired
     private TestEntityManager entityManager;
@@ -63,7 +63,7 @@ public class ViviendaHabitanteServiceTest {
             entityManager.persist(entity);
             entity.getViviendas().add(vivienda);
             habitanteList.add(entity);
-            vivienda.getHabitantes_actuales().add(entity);
+            vivienda.getHistorial().add(entity);
         }
        
     }
@@ -80,7 +80,7 @@ public class ViviendaHabitanteServiceTest {
         viviendaHabitanteService.addHabitante(newVivienda.getId(), habitante.getId());
 
         HabitanteEntity ultimoHabitante = viviendaHabitanteService.getHabitante(newVivienda.getId(), habitante.getId());
-        assertNotEquals(newVivienda.getHabitantes_actuales(), null);
+        assertNotEquals(newVivienda.getHistorial(), null);
         assertEquals(habitante.getId(), ultimoHabitante.getId());
         assertEquals(habitante, ultimoHabitante);
 
@@ -122,7 +122,7 @@ public class ViviendaHabitanteServiceTest {
 		for (int i = 0; i < 3; i++) {
 			HabitanteEntity entity = factory.manufacturePojo(HabitanteEntity.class);
 			entityManager.persist(entity);
-			vivienda.getHabitantes_actuales().add(entity);
+			vivienda.getHistorial().add(entity);
 			nuevaLista.add(entity);
 		}
 		viviendaHabitanteService.replaceHabitantes(vivienda.getId(), nuevaLista);

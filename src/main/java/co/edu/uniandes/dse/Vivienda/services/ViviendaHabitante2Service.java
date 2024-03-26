@@ -20,9 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 /*
- * Primera relacion con Habitantes, donde se modelan los habitantes actuales de una vivienda
+ * Segunda relacion con Habitantes, donde se modelan el historial de una vivienda
  */
-public class ViviendaHabitanteService {
+public class ViviendaHabitante2Service {
     @Autowired
     private HabitanteRepository habitanteRepository;
 
@@ -31,7 +31,7 @@ public class ViviendaHabitanteService {
 
     @Transactional
     public HabitanteEntity addHabitante(Long viviendaId, Long habitanteId) throws EntityNotFoundException {
-        log.info("Inicia proceso de agregarle un habitante a una vivienda con id = {0}", viviendaId);
+        log.info("Inicia proceso de agregarle un habitante al historial de una vivienda con id = {0}", viviendaId);
 
         Optional<HabitanteEntity> habitanteEntity = habitanteRepository.findById(habitanteId);
         if(habitanteEntity.isEmpty())
@@ -41,9 +41,9 @@ public class ViviendaHabitanteService {
         if(viviendaEntity.isEmpty())
             throw new EntityNotFoundException("Vivienda not found");
 
-        viviendaEntity.get().getHabitantes_actuales().add(habitanteEntity.get());
-        habitanteEntity.get().setVivienda(viviendaEntity.get());
-        log.info("Termina proceso de agregarle un habitante a una vivienda con id = {0}", viviendaId);
+        viviendaEntity.get().getHistorial().add(habitanteEntity.get());
+        habitanteEntity.get().getViviendas().add(viviendaEntity.get());
+        log.info("Termina proceso de agregarle un habitante al historial de una vivienda con id = {0}", viviendaId);
         return habitanteEntity.get();
 
         }
@@ -51,7 +51,7 @@ public class ViviendaHabitanteService {
     @Transactional
     public HabitanteEntity getHabitante(Long viviendaId, Long habitanteId)
             throws EntityNotFoundException, IllegalOperationException {
-        log.info("Inicia pproceso de consultar un habitante con una vivienda con id = {0}", viviendaId);
+        log.info("Inicia proceso de consultar un habitante del historial de la vivienda con id = {0}", viviendaId);
         Optional<HabitanteEntity> habitanteEntity = habitanteRepository.findById(habitanteId);
         Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(viviendaId);
 
@@ -60,8 +60,8 @@ public class ViviendaHabitanteService {
 
         if (viviendaEntity.isEmpty())
             throw new EntityNotFoundException("La vivienda esta vacia.");
-        log.info("Termina proceso de consultar un habitante con una vivienda con id = {0}", viviendaId);
-        if (!viviendaEntity.get().getHabitantes_actuales().contains(habitanteEntity.get()))
+        log.info("Termina proceso de consultar un habitante del historial de una vivienda con id = {0}", viviendaId);
+        if (!viviendaEntity.get().getHistorial().contains(habitanteEntity.get()))
             throw new IllegalOperationException("The habitante is not associated to the vivienda");
         
         return habitanteEntity.get();
@@ -69,17 +69,17 @@ public class ViviendaHabitanteService {
 
     @Transactional
     public List<HabitanteEntity> getHabitantes(Long viviendaId) throws EntityNotFoundException {
-        log.info("Inicia proceso de consultar todos los habitantes de la vivienda con id = {0}", viviendaId);
+        log.info("Inicia proceso de consultar todos los habitantes del historial de la vivienda con id = {0}", viviendaId);
         Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(viviendaId);
         if (viviendaEntity.isEmpty())
             throw new EntityNotFoundException("La vivienda esta vacia.");
-        log.info("Finaliza proceso de consultar todos los habitantes de la vivienda con id = {0}", viviendaId);
-        return viviendaEntity.get().getHabitantes_actuales();
+        log.info("Finaliza proceso de consultar todos los habitantes del historial de la vivienda con id = {0}", viviendaId);
+        return viviendaEntity.get().getHistorial();
     }
 
     @Transactional
     public List<HabitanteEntity> replaceHabitantes(Long viviendaId, List<HabitanteEntity> list) throws EntityNotFoundException {
-        log.info("Inicia proceso de reemplazar los habitantes de la vivienda con id = {0}", viviendaId);
+        log.info("Inicia proceso de reemplazar los habitantes del historial de la vivienda con id = {0}", viviendaId);
         Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(viviendaId);
         if (viviendaEntity.isEmpty())
             throw new EntityNotFoundException("La vivienda esta vacia.");
@@ -89,15 +89,15 @@ public class ViviendaHabitanteService {
             if (habitanteEntity.isEmpty())
                 throw new EntityNotFoundException("El habitante esta vacio.");
 
-            if (!viviendaEntity.get().getHabitantes_actuales().contains(habitanteEntity.get()))
-                viviendaEntity.get().getHabitantes_actuales().add(habitanteEntity.get());
+            if (!viviendaEntity.get().getHistorial().contains(habitanteEntity.get()))
+                viviendaEntity.get().getHistorial().add(habitanteEntity.get());
         }
-        log.info("Termina proceso de reemplazar los habitantes de la vivienda con id = {0}", viviendaId);
+        log.info("Termina proceso de reemplazar los habitantes del historial de la vivienda con id = {0}", viviendaId);
         return getHabitantes(viviendaId);}
 
     @Transactional
     public void removeHabitante(Long viviendaId, Long habitanteId) throws EntityNotFoundException, NoSuchElementException {
-        log.info("Inicia proceso de removerle un habitante a una vivienda con id = {0}", viviendaId);
+        log.info("Inicia proceso de removerle un habitante del historial a una vivienda con id = {0}", viviendaId);
 
         Optional<HabitanteEntity> habitanteEntity = habitanteRepository.findById(habitanteId);
         Optional<ViviendaEntity> viviendaEntity = viviendaRepository.findById(viviendaId);
@@ -107,8 +107,8 @@ public class ViviendaHabitanteService {
         if (viviendaEntity.isEmpty())
             throw new EntityNotFoundException("La vivienda esta vacia.");
 
-        viviendaEntity.get().getHabitantes_actuales().remove(habitanteEntity.get()); 
-        log.info("Termina proceso de removerle un habitante a una vivienda con id = {0}", viviendaId);
+        viviendaEntity.get().getHistorial().remove(habitanteEntity.get()); 
+        log.info("Termina proceso de removerle un habitante del historial a una vivienda con id = {0}", viviendaId);
         }    
 
 }
