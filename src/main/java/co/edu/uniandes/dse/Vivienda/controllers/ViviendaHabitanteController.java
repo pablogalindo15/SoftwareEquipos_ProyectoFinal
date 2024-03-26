@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uniandes.dse.Vivienda.dto.HabitanteDTO;
 import co.edu.uniandes.dse.Vivienda.dto.HabitanteDetailDTO;
-import co.edu.uniandes.dse.Vivienda.dto.LugarDTO;
-import co.edu.uniandes.dse.Vivienda.dto.LugarDetailDTO;
 import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
-import co.edu.uniandes.dse.Vivienda.entities.LugarEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.services.ViviendaHabitanteService;
