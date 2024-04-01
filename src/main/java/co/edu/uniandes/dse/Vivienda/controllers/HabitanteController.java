@@ -20,12 +20,6 @@ import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-
-
-
-
-
-
 @RestController
 @RequestMapping("/habitantes")
 

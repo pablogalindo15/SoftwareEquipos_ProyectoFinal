@@ -53,7 +53,6 @@ public class ViviendaLugarController {
     @ResponseStatus(code = HttpStatus.OK)
     public List<LugarEntity> getLugares(@PathVariable("viviendaId") Long viviendaId) throws EntityNotFoundException {
         List<LugarEntity> lugarEntity = viviendaLugarService.getLugares(viviendaId);
-        
         return modelMapper.map(lugarEntity,  new TypeToken<List<LugarDetailDTO>>() {
 		}.getType());
     }

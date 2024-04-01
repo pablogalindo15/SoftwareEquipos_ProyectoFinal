@@ -1,0 +1,528 @@
+{
+	"info": {
+		"_postman_id": "6a0d354d-8e0c-4a2b-944d-af8cf9966288",
+		"name": "ViviendaHabitante22Tests.postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32527961"
+	},
+	"item": [
+		{
+			"name": "Crear un propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"propietario_id_4\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Charles Leclerc\", \r\n    \"celular\": 3,\r\n    \"correo\": \"charleslec@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"vivienda_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000.00,\r\n    \"descripcion\": \"Perfecto para un estudiante joven\",\r\n    \"tamano\":80,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000.00,\r\n    \"coordY\":10000.00,\r\n    \"propietario\":{\"id\":{{propietario_id_4}}}\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un habitante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"habitante_id_4\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"nombre\" : \"Lando Norris\",\r\n    \"cedula\" : 1234767891\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/habitantes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"habitantes"
+					]
+				},
+				"description": "\"Si se devuelve 202 el request fue perfecto\""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un habitante 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"habitante_id_5\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"nombre\" : \"Bianca Bustamante\",\r\n    \"cedula\" : 1334567890\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/habitantes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"habitantes"
+					]
+				},
+				"description": "\"Si se devuelve 202 el request fue perfecto\""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un habitante 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"habitante_id_6\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"nombre\" : \"Bianca Bustamante\",\r\n    \"cedula\" : 1387767891\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/habitantes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"habitantes"
+					]
+				},
+				"description": "\"Si se devuelve 202 el request fue perfecto\""
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar un habitante a una vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/historial/{{habitante_id_4}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}",
+						"historial",
+						"{{habitante_id_4}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar un habitante a una vivienda 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/historial/{{habitante_id_5}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}",
+						"historial",
+						"{{habitante_id_5}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un habitante de una vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/historial/{{habitante_id_4}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}",
+						"historial",
+						"{{habitante_id_4}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un habitante no asociado a una vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"The habitante is not associated to the vivienda\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/historial/{{habitante_id_6}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}",
+						"historial",
+						"{{habitante_id_6}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un habitante que no existe de una vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"El habitante esta vacio.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/historial/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}",
+						"historial",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los habitantes de una vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of habitantes > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/historial",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}",
+						"historial"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reemplazar habitantes de una vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": {{habitante_id_5}}\r\n    },\r\n    {\r\n\r\n        \"id\": {{habitante_id_6}}\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/historial",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}",
+						"historial"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un habitante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/viviendas/{{vivienda_id_2}}/historial/{{habitante_id_5}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"viviendas",
+						"{{vivienda_id_2}}",
+						"historial",
+						"{{habitante_id_5}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
