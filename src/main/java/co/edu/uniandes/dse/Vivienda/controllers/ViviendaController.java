@@ -45,7 +45,7 @@ public class ViviendaController {
 
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public ViviendaDTO findOne(@PathVariable("id")Long id) throws EntityNotFoundException, IllegalOperationException{
         ViviendaEntity viviendaEntity = viviendaService.getVivienda(id);
@@ -62,14 +62,14 @@ public class ViviendaController {
         }.getType());
     }
 
-    @PutMapping(value = "{id}")
+    @PutMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public ViviendaDTO update(@PathVariable("id")Long id, @RequestBody ViviendaDTO viviendaDTO) throws EntityNotFoundException, IllegalOperationException{
         ViviendaEntity viviendaEntity = viviendaService.updateVivienda(id, modelMapper.map(viviendaDTO, ViviendaEntity.class));
         return modelMapper.map(viviendaEntity, ViviendaDTO.class);
     }
 
-    @DeleteMapping(value = "{id}")
+    @DeleteMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public void delete(@PathVariable("id")Long id) throws EntityNotFoundException, IllegalOperationException{
         viviendaService.deleteVivienda(id);;
