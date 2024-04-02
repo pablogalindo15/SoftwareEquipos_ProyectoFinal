@@ -1,3 +1,5 @@
+
+
 package co.edu.uniandes.dse.Vivienda.controllers;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.*;
 import co.edu.uniandes.dse.Vivienda.services.ViviendaHabitanteService;
 
+//* 
 @RestController
 @RequestMapping("/viviendas")
 public class ViviendaHabitanteController {
@@ -27,7 +30,7 @@ public class ViviendaHabitanteController {
         HabitanteEntity habitanteEntity = viviendaHabitanteService.addHabitante(viviendaId, habitanteId);
         return modelMapper.map(habitanteEntity, HabitanteDetailDTO.class);
     }
-
+    *///
     @GetMapping("/{viviendaId}/habitantes/{habitanteId}")
     @ResponseStatus(code = HttpStatus.OK)
     public HabitanteDetailDTO getHabitante(@PathVariable("viviendaId") Long viviendaId, @PathVariable("habitanteId") Long habitanteId) throws EntityNotFoundException, IllegalOperationException {

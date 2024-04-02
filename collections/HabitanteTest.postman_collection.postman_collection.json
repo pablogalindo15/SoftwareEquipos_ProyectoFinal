@@ -83,59 +83,6 @@
 			]
 		},
 		{
-			"name": "Obtener todos los habitantes",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test('Number of habitantes > ' + 0, function () {\r",
-							"   var data = pm.response.json()\r",
-							"   pm.expect(data.length).to.greaterThan(0)\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"   pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{baseUrl}}/habitantes",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"habitantes"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Obtener todos los habitantes",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "Text",
-					"header": [],
-					"cookie": [],
-					"body": ""
-				}
-			]
-		},
-		{
 			"name": "Obtener un habitante",
 			"event": [
 				{

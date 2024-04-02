@@ -23,11 +23,8 @@ import org.springframework.http.HttpStatus;
 import co.edu.uniandes.dse.Vivienda.services.HabitanteViviendaService;
 import org.springframework.web.bind.annotation.RequestBody;
 import co.edu.uniandes.dse.Vivienda.dto.HabitanteDTO;
+import co.edu.uniandes.dse.Vivienda.dto.ViviendaDTO;
 
-
-
-
-import co.edu.uniandes.dse.Vivienda.services.HabitanteViviendaService;
 
 
 
@@ -48,33 +45,35 @@ public class HabitanteViviendaController {
         return modelMapper.map(viviendaEntity, ViviendaDetailDTO.class);
     }
 
-
-
     @GetMapping("/{habitanteId}/viviendas/{viviendaId}")
     @ResponseStatus(code = HttpStatus.OK)
     public ViviendaDetailDTO getVivienda(@PathVariable("habitanteId") Long habitanteId, @PathVariable("viviendaId") Long viviendaId) throws EntityNotFoundException, IllegalOperationException {
             ViviendaEntity viviendaEntity= habitanteViviendaService.getVivienda(habitanteId);
         return modelMapper.map(viviendaEntity, ViviendaDetailDTO.class);
-    
-    
     }
 
-
-
-    
-
-    @PutMapping("/{habitanteId}/viviendas/{viviendaId}")
+    @GetMapping("/{habitanteId}/viviendas")
     @ResponseStatus(code = HttpStatus.OK)
-    public ViviendaDetailDTO updateVivienda(@PathVariable("habitanteId") Long habitanteId, @PathVariable("viviendaId") Long viviendaId) throws EntityNotFoundException, IllegalOperationException {
-            ViviendaEntity viviendaEntity= habitanteViviendaService.updateVivienda(habitanteId, viviendaId);
-        return modelMapper.map(viviendaEntity, ViviendaDetailDTO.class);
+    public List<ViviendaEntity> getViviendas(@PathVariable("habitanteId") Long habitanteId) throws EntityNotFoundException {
+        List<ViviendaEntity> viviendaEntity = habitanteViviendaService.getViviendas(habitanteId);
+        
+        return modelMapper.map(viviendaEntity,  new TypeToken<List<ViviendaDetailDTO>>() {
+        }.getType());
+    
     }
 
-    @DeleteMapping("/{habitanteId}/viviendas/{viviendaId}")
-    @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void removeVivienda(@PathVariable("habitanteId") Long habitanteId, @PathVariable("viviendaId") Long viviendaId) throws EntityNotFoundException, IllegalOperationException {
-        habitanteViviendaService.removeVivienda(habitanteId);
+    @PutMapping("/{habitanteId}/viviendas")
+    public List<ViviendaDetailDTO> replaceVivienda(@PathVariable("habitanteId") Long habitanteId, @RequestBody List<ViviendaDTO> viviendas) throws EntityNotFoundException {
+
+        List<ViviendaEntity> entities = modelMapper.map(viviendas, new TypeToken<List<ViviendaEntity>>() {
+        }.getType());
+
+        List<ViviendaEntity> viviendasList = habitanteViviendaService.replaceViviendas(habitanteId, entities);
+
+        return modelMapper.map(viviendasList,  new TypeToken<List<ViviendaDetailDTO>>() {
+        }.getType());
     }
+
 
 
 

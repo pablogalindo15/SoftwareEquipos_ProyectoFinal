@@ -18,6 +18,10 @@ import co.edu.uniandes.dse.Vivienda.services.HabitanteService;
 import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import org.springframework.web.bind.annotation.PathVariable;
+import java.util.stream.Collectors;
+import java.util.Collection;
+
+
 
 
 @RestController
@@ -48,6 +52,14 @@ public HabitanteDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundEx
     HabitanteEntity habitanteEntity = habitanteService.getHabitante(id);
     return modelMapper.map(habitanteEntity, HabitanteDTO.class);
 }
+
+@GetMapping
+@ResponseStatus(code = HttpStatus.OK)
+public Collection<HabitanteDTO> findAll() {
+    Collection<HabitanteEntity> habitanteEntities = habitanteService.getHabitantes();
+    return habitanteEntities.stream().map(habitanteEntity -> modelMapper.map(habitanteEntity, HabitanteDTO.class)).collect(Collectors.toList());
+}
+
 
 @PutMapping(value = "/{id}")
 @ResponseStatus(code = HttpStatus.OK)

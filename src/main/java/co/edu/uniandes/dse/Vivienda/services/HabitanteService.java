@@ -1,9 +1,12 @@
 package co.edu.uniandes.dse.Vivienda.services;
 import javax.transaction.Transactional;
+
+import java.util.Collection;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
+import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.repositories.HabitanteRepository;
@@ -43,6 +46,16 @@ public class HabitanteService {
         log.info("Termina proceso de consultar el habitante con id = {0}", habitanteId);
         return HabitanteEntity.get();
     }
+    
+    public Collection<HabitanteEntity> getHabitantes(){
+        log.info("Inicia proceso de consultar todos los habitantes");
+        Collection<HabitanteEntity> habitantes = HabitanteRepository.findAll();
+        log.info("Termina proceso de consultar todos los habitantes");
+        return habitantes;
+    }
+
+
+
     public HabitanteEntity updateHabitante(Long habitanteId, HabitanteEntity habitante)throws EntityNotFoundException, IllegalOperationException{
         log.info("Inicia proceso de actualizar el habitante con id = {0}", habitanteId);
         if (HabitanteRepository.findById(habitanteId).isEmpty()){
@@ -64,6 +77,8 @@ public class HabitanteService {
         HabitanteRepository.deleteById(habitanteId);
         log.info("Termina proceso de borrar el habitante con id = {0}", habitanteId);
     }
+
+
 
 
     
