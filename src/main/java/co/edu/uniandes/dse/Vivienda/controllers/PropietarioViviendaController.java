@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uniandes.dse.Vivienda.dto.PropietarioDTO;
-import co.edu.uniandes.dse.Vivienda.dto.ViviendaDTO;
 import co.edu.uniandes.dse.Vivienda.dto.ViviendaDetailDTO;
 import co.edu.uniandes.dse.Vivienda.entities.PropietarioEntity;
 import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
@@ -25,7 +24,6 @@ import co.edu.uniandes.dse.Vivienda.services.PropietarioViviendaService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
