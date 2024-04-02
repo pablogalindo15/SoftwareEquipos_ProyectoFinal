@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "b03faa8c-4a60-4f31-99ce-556034e57271",
-		"name": "ViviendasTests.postman_collection",
+		"name": "ViviendasTests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32527961"
 	},
@@ -14,13 +14,14 @@
 					"script": {
 						"exec": [
 							"var data = pm.response.json()\r",
-							"pm.globals.set(\"propietario_id_1\", data.id);\r",
+							"pm.globals.set(\"propietario_id_10\", data.id);\r",
 							"\r",
 							"pm.test(\"Status code is 201\", function(){\r",
 							"    pm.response.to.have.status(201)\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -29,7 +30,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Elon Musk\", \r\n    \"celular\": 1,\r\n    \"correo\": \"elonmusk@gmail.com\"\r\n}",
+					"raw": "{\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Lewis Hamilton\", \r\n    \"celular\": 1,\r\n    \"correo\": \"ham44@gmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -63,7 +64,8 @@
 							"});\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -72,7 +74,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000.00,\r\n    \"descripcion\": \"Perfecto para un estudiante joven\",\r\n    \"tamano\":80,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000.00,\r\n    \"coordY\":10000.00,\r\n    \"propietario\":{\"id\":{{propietario_id_1}}}\r\n\r\n}",
+					"raw": "{\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000.00,\r\n    \"descripcion\": \"Perfecto para un estudiante joven\",\r\n    \"tamano\":80,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000.00,\r\n    \"coordY\":10000.00,\r\n    \"propietario\":{\"id\":{{propietario_id_10}}}\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -106,7 +108,8 @@
 							"    pm.response.to.have.status(201)\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -115,7 +118,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Apartamento moderno\",\r\n    \"precio\": 1500000.00,\r\n    \"descripcion\": \"Espacioso y luminoso\",\r\n    \"tamano\": 120,\r\n    \"estrato\": 4,\r\n    \"fotos\": \"https://images.app.goo.gl/xyz123\",\r\n    \"restricciones\": \"No se permiten fiestas\",\r\n    \"tipo\": 2,\r\n    \"contacto\": \"www.modernapartments.com\",\r\n    \"direccion\": \"Calle 10 #25-35\",\r\n    \"ocupada\": false,\r\n    \"coordX\": 20000.00,\r\n    \"coordY\": 20000.00,\r\n    \"propietario\": {\"id\":{{propietario_id_1}}}\r\n}\r\n",
+					"raw": "{\r\n    \"nombre\": \"Apartamento moderno\",\r\n    \"precio\": 1500000.00,\r\n    \"descripcion\": \"Espacioso y luminoso\",\r\n    \"tamano\": 120,\r\n    \"estrato\": 4,\r\n    \"fotos\": \"https://images.app.goo.gl/xyz123\",\r\n    \"restricciones\": \"No se permiten fiestas\",\r\n    \"tipo\": 2,\r\n    \"contacto\": \"www.modernapartments.com\",\r\n    \"direccion\": \"Calle 10 #25-35\",\r\n    \"ocupada\": false,\r\n    \"coordX\": 20000.00,\r\n    \"coordY\": 20000.00,\r\n    \"propietario\": {\"id\":{{propietario_id_10}}}\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -158,7 +161,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\" : 1,\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000,\r\n    \"descripcion\": \"Muy bonito\",\r\n    \"tamano\":80,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000,\r\n    \"coordY\":10000,\r\n    \"propietario\":{\"id\":1}\r\n\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -206,7 +209,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"03-03-2023 12:16:09\",\r\n        \"message\": \"NO SE ENCONTRO LA VIVIENDA\"\r\n    }\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -254,7 +257,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\r\n    {\r\n        \"id\" : 1,\r\n        \"nombre\":\"Habitacion unica\",\r\n        \"precio\": 1000000,\r\n        \"descripcion\": \"Muy bonito\",\r\n        \"tamano\":80,\r\n        \"estrato\": 3,\r\n        \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n        \"restricciones\":\"No se aceptan mascotas\",\r\n        \"tipo\":1,\r\n        \"contacto\":\"www.cityU.com\",\r\n        \"direccion\":\"cra 1a #19-23\",\r\n        \"ocupada\":false,\r\n        \"coordX\":10000,\r\n        \"coordY\":10000,\r\n        \"propietario\":{\"id\":1}\r\n        },\r\n\r\n    {\r\n        \"id\" : 2,\r\n        \"nombre\": \"Apartamento moderno\",\r\n        \"precio\": 1500000,\r\n        \"descripcion\": \"Espacioso y luminoso\",\r\n        \"tamano\": 120,\r\n        \"estrato\": 4,\r\n        \"fotos\": \"https://images.app.goo.gl/xyz123\",\r\n        \"restricciones\": \"No se permiten fiestas\",\r\n        \"tipo\": 2,\r\n        \"contacto\": \"www.modernapartments.com\",\r\n        \"direccion\": \"Calle 10 #25-35\",\r\n        \"ocupada\": false,\r\n        \"coordX\": 20000,\r\n        \"coordY\": 20000,\r\n        \"propietario\": {\"id\": 2}\r\n    }\r\n]",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -284,7 +287,8 @@
 							"   pm.response.to.have.status(200);\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -293,7 +297,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000.00,\r\n    \"descripcion\": \"Perfecto para un estudiante joven que quiera socializar con otros estudiantes de edad similar a la suya\",\r\n    \"tamano\":35,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000.00,\r\n    \"coordY\":10000.00,\r\n    \"propietario\":{\"id\":1}\r\n\r\n}",
+					"raw": "{\r\n    \"nombre\":\"Habitacion unica\",\r\n    \"precio\": 1000000.00,\r\n    \"descripcion\": \"Perfecto para un estudiante joven que quiera socializar con otros estudiantes de edad similar a la suya\",\r\n    \"tamano\":35,\r\n    \"estrato\": 3,\r\n    \"fotos\":\"https://images.app.goo.gl/nP9QfwVN2GF4vNXF6\",\r\n    \"restricciones\":\"No se aceptan mascotas\",\r\n    \"tipo\":1,\r\n    \"contacto\":\"www.cityU.com\",\r\n    \"direccion\":\"cra 1a #19-23\",\r\n    \"ocupada\":false,\r\n    \"coordX\":10000.00,\r\n    \"coordY\":10000.00,\r\n    \"propietario\":{\"id\":{{propietario_id_10}}}\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

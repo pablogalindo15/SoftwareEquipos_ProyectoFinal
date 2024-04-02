@@ -14,7 +14,6 @@ import co.edu.uniandes.dse.Vivienda.entities.HabitanteEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.*;
 import co.edu.uniandes.dse.Vivienda.services.ViviendaHabitanteService;
 
-//* 
 @RestController
 @RequestMapping("/viviendas")
 public class ViviendaHabitanteController {
