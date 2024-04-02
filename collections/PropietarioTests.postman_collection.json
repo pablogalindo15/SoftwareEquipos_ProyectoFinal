@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "9a64a844-c072-4232-bf8d-860305d9f6e6",
+		"name": "PropietarioTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32527961"
+	},
+	"item": [
+		{
+			"name": "Crear un propeitario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// En esta instancia se guarda el id que se recibe en el json, para luego usarlo en el get\r",
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"propietario_id_1\", data.id);\r",
+							"\r",
+							"// En esta se comprueba que el status del send si sea el correcto\r",
+							"pm.test(\"Status code is 201\", function (){\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"foto\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundodeportivo.com%2Furbantecno%2Fc%2Felon-musk&psig=AOvVaw3VzjlMTSDGz4Jd9mxiTcCV&ust=1709129713654000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCO-r3ay4QDFQAAAAAdAAAAABAE\",\r\n    \"nombre\": \"Elon Musk\", \r\n    \"celular\": 1,\r\n    \"correo\": \"elonmusk@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Propietarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de Propietarios > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ejemplo Get Propietarios",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propietarios",
+								"{{propietario_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get Propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"{{propietario_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ejemplo Get Propietario",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propietarios",
+								"{{propietario_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get Propietario Inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontró el Propietario\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Propietario Inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": ""
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Update Propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"foto\": \"https://i.insider.com/65e5a99c6080194819fc0515?width=700\",\r\n    \"nombre\": \"Sam Altman\", \r\n    \"celular\": 2,\r\n    \"correo\": \"samaltman@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"{{propietario_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Propietario Inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el propietario\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"foto\": \"https://i.insider.com/65e5a99c6080194819fc0515?width=700\",\r\n    \"nombre\": \"Sam Altman\", \r\n    \"celular\": 2,\r\n    \"correo\": \"samaltman@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/{{propietario_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"{{propietario_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Propietario Inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el propietario\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propietarios/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propietarios",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

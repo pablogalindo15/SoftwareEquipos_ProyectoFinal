@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "355dee53-5d72-464b-a97f-e8feb91696aa",
+		"name": "LugarTests",
+		"description": "tipoLugar es una enumeracion con estos tipos {Universidad, Restaurante, Supermercado, Parque, CentroComercial }\n\nSi devuelve 202, está bien.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32527961"
+	},
+	"item": [
+		{
+			"name": "Crear un Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"lugar_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"nombre\":\"cafeteria\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000.0,\n    \"precioMax\": 50000.0,\n    \"coordenadaX\": 123.0,\n    \"coordenadaY\":123.0,\n    \"tipo\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los lugares",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of lugares > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":1,\n    \"nombre\":\"cafeteria\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000,\n    \"precioMax\": 50000,\n    \"coordenadaX\": 123,\n    \"coordenadaY\":123,\n    \"tipo\": 1,\n    \"viviendas\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"nombre\": \"cafeteria\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000,\n    \"precioMax\": 50000,\n    \"coordenadaX\": 123,\n    \"coordenadaY\": 123,\n    \"tipo\": 1,\n    \"viviendas\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un lugar que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el lugar\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Starbucks\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000.0,\n    \"precioMax\": 50000.0,\n    \"coordenadaX\": 123.0,\n    \"coordenadaY\":123.0,\n    \"tipo\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un lugar que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el lugar\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Starbucks\",\n    \"fotos\": \"fotos\",\n    \"tiempoLlegada\": \"12\",\n    \"gratis\": true,\n    \"precioMin\": 2000,\n    \"precioMax\": 50000,\n    \"coordenadaX\": 123,\n    \"coordenadaY\":123,\n    \"tipo\": 1\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lugares/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/{{lugar_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"{{lugar_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un lugar que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el lugar\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/lugares/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lugares",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
