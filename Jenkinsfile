@@ -4,7 +4,7 @@ pipeline {
       GIT_REPO = 'ISIS2603_202410_S2_E2_Vivienda_Back'
       GIT_CREDENTIAL_ID = '7c21addc-0cbf-4f2e-9bd8-eced479c56c6'
       ARCHID_TOKEN = credentials('archid')
-      SONARQUBE_URL = 'http://172.24.101.209:8082/sonar-isis2603'
+      //SONARQUBE_URL = 'http://172.24.101.209:8082/sonar-isis2603'
    }
    stages {
       stage('Checkout') { 
@@ -64,7 +64,7 @@ pipeline {
             script {
                docker.image('citools-isis2603:latest').inside('-v ${WORKSPACE}/maven:/root/.m2') {
                   sh '''
-                     ./mvnw clean verify sonar:sonar -Dsonar.host.url=${SONARQUBE_URL}
+                     ./mvnw clean verify 
                   '''
                }
             }
