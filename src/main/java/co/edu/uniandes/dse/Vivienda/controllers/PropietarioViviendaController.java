@@ -22,6 +22,8 @@ import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.services.PropietarioViviendaService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -68,6 +70,12 @@ public class PropietarioViviendaController {
 		List<ViviendaEntity> result = propietarioViviendaService.replaceViviendas(propietariosId, viviendasList);
 		return modelMapper.map(result, new TypeToken<List<ViviendaDetailDTO>>() {
 		}.getType());
+	}
+
+	@DeleteMapping(value = "/viviendas/{{vivienda_id_1}}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") Long id, @PathVariable("propietariosId") Long propietariosId) throws EntityNotFoundException {
+        propietarioViviendaService.removeViviendaFromPropietario(id, propietariosId);
 	}
 	
 }
