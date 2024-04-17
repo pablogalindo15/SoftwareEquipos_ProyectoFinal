@@ -22,8 +22,6 @@ import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.services.ServicioService;
 
 
-
-
 @RestController
 @RequestMapping("/servicios")
 public class ServicioController {
