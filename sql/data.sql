@@ -19,3 +19,14 @@ insert into vivienda_entity (nombre, precio, descripcion, fotos, tamano, estrato
 insert into vivienda_entity (nombre, precio, descripcion, fotos, tamano, estrato, restricciones, tipo, contacto, direccion, ocupada, coordX, coordY, propietario_id) values ('Quill', 59, 'Eswl gb/bile duct', 'http://dummyimage.com/133x100.png/dddddd/000000', 1036, 3, 'Muscle thermography', 0, 'qfursey7@nasa.gov', 'PO Box 95923', true, 41.65, 54.81, 8);
 insert into vivienda_entity (nombre, precio, descripcion, fotos, tamano, estrato, restricciones, tipo, contacto, direccion, ocupada, coordX, coordY, propietario_id) values ('Raeann', 83, 'Open reduct maxillary fx', 'http://dummyimage.com/207x100.png/ff4444/ffffff', 1036, 0, 'Periph ganglionect NEC', 2, 'rlawlance8@icq.com', 'PO Box 66377', false, 56.99, 63.91, 9);
 insert into vivienda_entity (nombre, precio, descripcion, fotos, tamano, estrato, restricciones, tipo, contacto, direccion, ocupada, coordX, coordY, propietario_id) values ('Garvin', 2, 'Carotid pulse tracing', 'http://dummyimage.com/200x100.png/dddddd/000000', 622, 3, 'Sclera reinforcement NEC', 0, 'gmcelhargy9@theglobeandmail.com', 'Room 392', true, 53.93, 39.88, 10);
+
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (1, 709146542, 'Avie Rideout', 1);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (2, 288408031, 'Lurline Chastang', 2);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (3, 131580995, 'Tiffani Merwood', 3);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (4, 592506303, 'Rasia Danby', 4);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (5, 479790538, 'Rafaello Blackwell', 5);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (6, 465310691, 'Giacobo Dripp', 6);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (7, 785171550, 'Tully Mathivon', 7);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (8, 027248530, 'Natty Kubera', 8);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (9, 499702625, 'Heidi January', 9);
+insert into habitante_entity (id, cedula, nombre , vivienda_id) values (10, 499807986, 'Sigismond Schmidt', 10);
