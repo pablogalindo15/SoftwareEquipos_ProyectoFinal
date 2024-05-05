@@ -107,12 +107,12 @@ insert into VIVIENDA_ENTITY_HISTORIAL (viviendas_id, historial_id) values (1, 7)
 
 
 insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (1, 'Buen servicio', 'la persona que nos atendió brindo un buen servicio', 5,'Sherlock');
-insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (2, "fea vista", "La vista no fue de mi agrado ya que un edificio tapa la visión", 3,'wWinslow');
+insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (2, 'fea vista', 'La vista no fue de mi agrado ya que un edificio tapa la visión', 3,'Winslow');
 insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (3, 'linda vista', 'Me gusto la vista ya que da a la avenida', 4,'Katushka');
-insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (4, "es lo que esperaba", 'El apartamento es justamente como en las publicaciones', 5,'Garvin');
-insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (5, "no es lo que esperaba", 'no es nada parecido al de las publicaciones', 2,'Sayers');
-insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (6, "buena ubicación", 'Esta muy cerca de mi universidad', 5,'Tybie');
-insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (7, "mala ubiacion", 'Es muy lejos de mi universidad', 2,'Quill');
-insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (8, "centralizado", 'Al estar en el centro de la ciudad, tengo acceso a lugares muy rapidamente', 4,'Dorothy');
-insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (9, "no centralizado", ' queda muy lejos de todo al no estar en el centro de la ciudad', 3,'Denny');
-insert into comentario_entity (id,titulo,texto, calificacion , nombre) values (10, "buen piso", 'Me gustaron mucho el diseño de las baldosas', 3,'Zitella');
+insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (4, 'es lo que esperaba', 'El apartamento es justamente como en las publicaciones', 5,'Garvin');
+insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (5, 'no es lo que esperaba', 'no es nada parecido al de las publicaciones', 2,'Sayers');
+insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (6, 'buena ubicación', 'Esta muy cerca de mi universidad', 5,'Tybie');
+insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (7, 'mala ubiacion', 'Es muy lejos de mi universidad', 2,'Quill');
+insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (8, 'centralizado', 'Al estar en el centro de la ciudad, tengo acceso a lugares muy rapidamente', 4,'Dorothy');
+insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (9, 'no centralizado', ' queda muy lejos de todo al no estar en el centro de la ciudad', 3,'Denny');
+insert into comentario_entity (id,titulo,texto, calificacion , nombre) values (10, 'buen piso', 'Me gustaron mucho el diseño de las baldosas', 3,'Zitella');
