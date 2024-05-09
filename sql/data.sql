@@ -105,6 +105,16 @@ insert into VIVIENDA_ENTITY_HISTORIAL (viviendas_id, historial_id) values (5, 4)
 insert into VIVIENDA_ENTITY_HISTORIAL (viviendas_id, historial_id) values (7, 3);
 insert into VIVIENDA_ENTITY_HISTORIAL (viviendas_id, historial_id) values (1, 7);
 
+nsert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (1, 'Mydo', 420317, 0);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (2, 'Katz', 609437, 2);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (3, 'Fadeo', 728832, 1);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (4, 'Brightbean', 963828, 4);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (5, 'Tagfeed', 261183, 2);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (6, 'Kwilith', 827956, 2);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (7, 'Skynoodle', 324760, 1);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (8, 'Jaxworks', 549510, 3);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (9, 'Snaptags', 504635, 0);
+insert into SERVICIO_ENTITY (id, nombre, costo_adicional, tipo) values (10, 'Kamba', 86993, 2);
 
 insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (1, 'Buen servicio', 'la persona que nos atendió brindo un buen servicio', 5,'Sherlock');
 insert into comentario_entity (id,titulo, texto, calificacion , nombre) values (2, 'fea vista', 'La vista no fue de mi agrado ya que un edificio tapa la visión', 3,'Winslow');
