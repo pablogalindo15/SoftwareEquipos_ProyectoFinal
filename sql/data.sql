@@ -31,51 +31,64 @@ insert into habitante_entity (id, cedula, nombre , vivienda_id) values (8, 02724
 insert into habitante_entity (id, cedula, nombre , vivienda_id) values (9, 499702625, 'Heidi January', 9);
 insert into habitante_entity (id, cedula, nombre , vivienda_id) values (10, 499807986, 'Sigismond Schmidt', 10);
 
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (1, 'Huel, Goyette and Prohaska', 970, 586, 'http://dummyimage.com/198x100.png/5fa2dd/ffffff', false, 945, 80, 216, 1);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (2, 'Treutel, Stamm and Lubowitz', 342, 394, 'http://dummyimage.com/157x100.png/5fa2dd/ffffff', true, 981, 464, 294, 0);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (3, 'Dickens-Balistreri', 936, 534, 'http://dummyimage.com/124x100.png/5fa2dd/ffffff', false, 952, 201, 209, 1);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (4, 'Adams and Sons', 672, 236, 'http://dummyimage.com/206x100.png/5fa2dd/ffffff', false, 840, 343, 73, 2);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (5, 'Schuppe LLC', 940, 934, 'http://dummyimage.com/139x100.png/dddddd/000000', false, 852, 35, 159, 2);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (6, 'Ruecker-Kub', 620, 412, 'http://dummyimage.com/146x100.png/cc0000/ffffff', false, 961, 376, 88, 4);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (7, 'Davis-Williamson', 503, 714, 'http://dummyimage.com/124x100.png/dddddd/000000', false, 723, 387, 229, 4);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (8, 'Nicolas-Sauer', 981, 489, 'http://dummyimage.com/202x100.png/cc0000/ffffff', true, 922, 439, 13, 2);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (9, 'Schmitt, Bauch and Powlowski', 304, 830, 'http://dummyimage.com/109x100.png/5fa2dd/ffffff', true, 763, 104, 188, 3);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (10, 'Metz-Wiza', 970, 349, 'http://dummyimage.com/137x100.png/cc0000/ffffff', false, 512, 496, 127, 3);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (11, 'O''Reilly and Sons', 591, 114, 'http://dummyimage.com/206x100.png/5fa2dd/ffffff', false, 534, 233, 284, 2);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (12, 'Runolfsdottir LLC', 831, 229, 'http://dummyimage.com/231x100.png/cc0000/ffffff', true, 555, 399, 198, 4);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (13, 'Champlin Group', 27, 907, 'http://dummyimage.com/209x100.png/dddddd/000000', false, 565, 215, 174, 1);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (14, 'Morissette, Bernier and Moen', 14, 886, 'http://dummyimage.com/205x100.png/dddddd/000000', true, 910, 63, 212, 1);
-insert into lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) values (15, 'Connelly Group', 602, 947, 'http://dummyimage.com/100x100.png/ff4444/ffffff', true, 898, 207, 53, 0);
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (1, 'Universidad De Los Andes', 4.602434129812227, -74.0662932590041, 'https://uniandes.edu.co/sites/default/files/campus_ng.jpg', false, 10000, 5000, 5, 0);
 
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (5, 13);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (5, 4);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (8, 10);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (5, 12);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (6, 13);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (4, 12);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 1);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (2, 9);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 6);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (1, 12);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (4, 13);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (8, 10);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (4, 8);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (10, 6);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (7, 7);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (7, 5);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (4, 4);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (3, 4);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 11);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (2, 12);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (1, 10);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (6, 6);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 8);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (1, 1);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (7, 13);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (5, 14);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 4);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 6);
-insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO  (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (7, 15);
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (2, 'Pontificia Universidad Javeriana', 4.630117828190012, -74.06450287597498, 'https://www.javeriana.edu.co/recursosdb/659410/668610/deparatamentos-e-institutos.jpg/39709ee8-a370-7ea2-4880-fb9d9f6e2c3d?t=1684251553829', false, 10000, 5000, 5, 0);
+
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (3, 'Universidad del Rosario', 4.601875436064864, -74.07346446161951, 'https://urosario.edu.co/static/getattachment/5556617b-2b6c-4d2d-8b9e-ca836ee99308/portadanoticias.jpg', false, 10000, 5000, 5, 0);
+
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (4, 'Universidad de La Sabana', 4.86910458497227, -74.03288012372631, 'https://www.unisabana.edu.co/fileadmin/_processed_/e/1/csm_foto-universidad-de-la-sabana-nota-informacion-receso-2021_6b46bf5451.jpg', false, 10000, 5000, 5, 0);
+
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (5, 'Universidad Nacional de Colombia', 4.637601843845605, -74.08274817920406, 'https://s3.amazonaws.com/rtvc-assets-senalcolombia.gov.co/s3fs-public/field/image/ppal-sc-unal.jpg', false, 10000, 5000, 5, 0);
+
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (6, 'Carulla', 4.655594271734949, -74.05321534959184, 'https://colombiamaspositiva.com/wp-content/uploads/2021/11/WhatsApp-Image-2021-11-25-at-10.19.29-PM.jpeg', false, 100000, 100, 5, 2);
+
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (7, 'MacDonalds', 4.676441795832425, -74.04849651941522, 'https://www.acis.org.co/portal/sites/default/files/DSC08692.jpg', false, 100000, 100, 5, 1);
+
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (8, 'Parque del chico', 4.674506258610858, -74.0443767074275, 'https://www.museodelchico.com/wp-content/uploads/2023/06/parque-chico-scaled.jpg', true, 100000, 0, 5, 3);
+
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (9, 'Centro Comercial Andino', 4.667617914715053, -74.05248676943387, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tripadvisor.es%2FAttraction_Review-g294074-d315690-Reviews-Centro_Comercial_Andino-Bogota.html&psig=AOvVaw2JtRWqFeocxQn7ckko2a-D&ust=1716414122929000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOiRzoLbn4YDFQAAAAAdAAAAABAE', false, 100000, 100, 5, 4);
+
+
+INSERT INTO lugar_entity (id, nombre, coordenadax, coordenaday, fotos, gratis, precio_max, precio_min, tiempo_llegada, tipo) VALUES
+ (9, 'Centro Comercial Andino', 4.667617914715053, -74.05248676943387, 'https://pbs.twimg.com/media/FwQOuIxWcAEGaKh?format=jpg&name=large', false, 100000, 100, 5, 4);
+
+
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (5, 4);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (8, 5); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (5, 6); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (6, 7); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (4, 6); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 1);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (2, 9);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 6);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (1, 8); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (4, 7); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (4, 8);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (10, 6);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (7, 7);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (7, 5);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (4, 4);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (3, 4);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 8); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (2, 7); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (1, 9); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (6, 6);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 8);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (1, 1);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (7, 8); 
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (5, 9);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (9, 4);
+insert into VIVIENDA_ENTITY_LUGAR_DE_INTERES_CERCANO (viviendas_cercanas_id, lugar_de_interes_cercano_id) values (7, 7); 
 
 insert into VIVIENDA_ENTITY_HISTORIAL (viviendas_id, historial_id) values (1, 9);
 insert into VIVIENDA_ENTITY_HISTORIAL (viviendas_id, historial_id) values (4, 2);
