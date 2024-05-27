@@ -4,6 +4,8 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import co.edu.uniandes.dse.Vivienda.entities.ComentarioEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
@@ -56,6 +58,9 @@ public class ComentarioService {
     comentarioRepository.deleteById(comentarioid);
     }
     
-    
+    public Page<ComentarioEntity> getComentariosPaginados(int page, int size) {
+        PageRequest pageable = PageRequest.of(page, size);
+        return comentarioRepository.findAll(pageable);
+    }
     
 }
