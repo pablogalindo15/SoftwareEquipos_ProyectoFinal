@@ -10,6 +10,12 @@ import co.edu.uniandes.dse.Vivienda.entities.ViviendaEntity;
 import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.Vivienda.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.Vivienda.repositories.HabitanteRepository;
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -77,6 +83,20 @@ public class HabitanteService {
         HabitanteRepository.deleteById(habitanteId);
         log.info("Termina proceso de borrar el habitante con id = {0}", habitanteId);
     }
+
+    public List<HabitanteEntity> sortBasedUponSomeField(String field) {
+
+        return HabitanteRepository.findAll(Sort.by(Sort.Direction.ASC, field));
+    }
+
+    public Page<HabitanteEntity> getHabitanteWithPagination (int offset, int pageSize){
+        return HabitanteRepository.findAll(PageRequest.of(offset, pageSize));
+    }
+
+    public Page<HabitanteEntity> getHabitanteWithPaginationAndSorting (int offset, int pageSize, String field){
+        return HabitanteRepository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(Sort.Direction.ASC, field) ));
+    } 
+        
 
 
 

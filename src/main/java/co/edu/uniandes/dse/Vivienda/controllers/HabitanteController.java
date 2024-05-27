@@ -20,6 +20,11 @@ import co.edu.uniandes.dse.Vivienda.exceptions.EntityNotFoundException;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.stream.Collectors;
 import java.util.Collection;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
+import java.util.ArrayList;
+import org.springframework.data.domain.Page;
+
 
 
 
@@ -75,6 +80,20 @@ public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, 
 
 }
 
+@GetMapping("/sort/{fields}")
+public List<HabitanteEntity > sortHabitantes(@PathVariable String fields) {
 
+    return habitanteService.sortBasedUponSomeField(fields);
+}
+
+@GetMapping("/pagination/{offset}/{pageSize}")
+public Page<HabitanteEntity> getHabitanteWithPagination(@PathVariable int offset, @PathVariable int pageSize) {
+    return habitanteService.getHabitanteWithPagination(offset, pageSize);
+}
+
+@GetMapping("/paginationandsorting/{offset}/{pageSize}/{fields}")
+public Page<HabitanteEntity> paginationAndSorting(@PathVariable int offset, @PathVariable int pageSize, @PathVariable String fields) {
+    return habitanteService.getHabitanteWithPaginationAndSorting(offset, pageSize, fields);
+}
 
 }
