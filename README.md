@@ -5,7 +5,7 @@ Housing Management System Backend
 ---------------------------------
 
 Overview
-~~~~~~~~
+
 
 This project is the backend for a comprehensive housing management system, developed as part of the Software development in teams course at Universidad de los Andes. It provides a robust API for managing properties, residents, and related services.
 
